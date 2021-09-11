@@ -24,7 +24,7 @@
 // ]
 // Output: 3
 
-// Constraints:-
+// Constraints:
 
 //     m == grid.length
 //     n == grid[i].length

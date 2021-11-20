@@ -42,7 +42,7 @@ public:
         for(auto str: strs)
         {
             string sortedString = str;
-            sort(sortedString.begin(),sortedString.end());
+            sort(sortedString.begin(),sortedString.end());//by sorting, all anagrams will result to a same string (sorted one), which will be in turn used as the key to map all similar anagrams
             mp[sortedString].emplace_back(str);
         }
         

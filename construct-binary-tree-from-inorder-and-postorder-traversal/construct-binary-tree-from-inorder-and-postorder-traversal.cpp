@@ -21,7 +21,7 @@ public:
         while(in[i]!=post[j])
             i++; //finding the current postorder element in the inorder element
         
-        j--; //decreasing the pointer of the postorder array
+        j--; //decreasing the pointer of the postorder array (as we are traversing the postorder array from behind, and this j is a global pointer and will stop only at an index which is supposed to be a root)
         
         TreeNode* node = new TreeNode(in[i]); //creating the new node
         node->right = util(i+1,i2, j, in, post); //passing the right range of the inorder array from i+1 to i2, to create the right subtree. It returns the root of the right subtree

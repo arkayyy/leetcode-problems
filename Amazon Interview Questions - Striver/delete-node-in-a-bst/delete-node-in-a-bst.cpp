@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+    //this helper function follows the principle that the right subtree of the current node be connected to the rightmost 
+    //node below its own right node.
     TreeNode* helper(TreeNode* root)
     {
         if(!root->left)

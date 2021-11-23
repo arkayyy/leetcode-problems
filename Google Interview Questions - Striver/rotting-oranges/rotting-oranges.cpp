@@ -9,6 +9,8 @@ public:
             i=a; j=b; steps=c;
         }
     };
+    
+    
     int orangesRotting(vector<vector<int>>& grid) {
        
         
@@ -20,6 +22,7 @@ public:
         int cntNonEmpty = 0;
         
         
+        //Most optimal approach : Multisource BFS traversal starting from every node that was initially rotten, and checking their adjacents in all 4 directions.
          queue<qt*> q;
         
         
@@ -27,8 +30,8 @@ public:
         {
             for(int j = 0;j<c;j++)
                 {
-                    if(grid[i][j]==2) //storing the position of the rotten oranges, along with the steps taken uptil that orange
-                    {q.push(new qt(i,j,0)); }
+                    if(grid[i][j]==2) //checking for all the oranges that are rotten intitially (multisource BFS)
+                    {q.push(new qt(i,j,0)); } //in queue we are storing the position of the rotten oranges, along with the steps taken uptil that orange
                 
                     if(grid[i][j]==1) cntNonEmpty++; //counting all cells where oranges (rotten or fresh) are present initially.
                 }       

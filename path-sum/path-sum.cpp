@@ -18,14 +18,8 @@ public:
        if(!root ) {return false;} 
         
     if(!root->left && !root->right)
-       {
-        return (targetSum-root->val)==0;}
+       {return (targetSum-root->val)==0;}
   
-
-    if(!root->left)
-        return hasPathSum(root->right,targetSum-root->val);
-    if(!root->right)
-        return hasPathSum(root->left,targetSum-root->val);
 
     return hasPathSum(root->left,targetSum-(root->val))||hasPathSum(root->right,targetSum-(root->val));
 

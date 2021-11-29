@@ -9,6 +9,7 @@ public:
         {
             curr.push_back(i);
             dfs(i,n,curr,ans,graph);
+            //backtracking by simply removing the node from the current sequence
             curr.pop_back();
         }
     }

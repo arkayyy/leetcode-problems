@@ -38,7 +38,7 @@ public:
                 TreeNode* t = q.front();
                 q.pop();
                 
-                if((level&1) == 1)
+                if((level&1) == 1) //odd level
                 {
                     if(((t->val)&1)==1)
                         return false;

@@ -1,6 +1,7 @@
 class Solution {
 public:
     const int MOD = 1e9+7;
+    //using binary search we are finding the number whcih has exactly N magical numbers on the left of it
     int nthMagicalNumber(int N, int A, int B) {
         long L = lcm(A, B), C = (L/A) + (L/B) - 1, k = (N-1) / C, ans = 0;
         for(int i = 1, j = 1, magicalNeeded = N - k*C; magicalNeeded; magicalNeeded--) 

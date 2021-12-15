@@ -14,6 +14,7 @@ public:
     int rangeSumBST(TreeNode* root, int low, int high) {
         if(!root) return 0;
         
-        return rangeSumBST(root->left,low,high)+((root->val >= low && root->val<=high)?root->val:0)+rangeSumBST(root->right, low,high);
+        //moving in inorder fashion
+        return rangeSumBST(root->left,low,min(root->val,high))+((root->val >= low && root->val<=high)?root->val:0)+rangeSumBST(root->right, max(root->val,low),high);
     }
 };

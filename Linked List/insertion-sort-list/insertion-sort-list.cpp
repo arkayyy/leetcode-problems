@@ -14,7 +14,7 @@ public:
     
     
     ListNode* insertionSortList(ListNode* head) {
-        
+        if(!head) return NULL;
         //creating a dummy node to connect before the head node, as it makes it easier to insert any node even if it wants to replace the head.
         ListNode* preHead = new ListNode(0);
         

@@ -26,7 +26,7 @@ public:
 
         //         return ans;
 
-        // Counting sort approach:-
+        // Counting sort approach (TC: O(N)):-
         int mini = (*min_element(arr.begin(), arr.end()));
         int maxi = *max_element(arr.begin(), arr.end());
 
@@ -43,7 +43,7 @@ public:
             int j = 0;
             for (int i = 0; i < n; i++)
             {
-                if (freq[i])
+                for (int k = freq[i]; k > 0; k--)
                     arr[j++] = i - abs(mini);
             }
         }
@@ -54,7 +54,7 @@ public:
             int j = 0;
             for (int i = 0; i < n; i++)
             {
-                if (freq[i])
+                for (int k = freq[i]; k > 0; k--)
                     arr[j++] = i + abs(mini);
             }
         }

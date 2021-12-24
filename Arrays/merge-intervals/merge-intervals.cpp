@@ -12,7 +12,7 @@ public:
         
         for(int i = 1; i<intervals.size();i++)
         {
-            if(intervals[i][0] > right) //CASE I: if current {left,right} is {1,3} and the ith element (range) is {4,6}..
+            if(intervals[i][0] > right) //CASE I: if current {left,right} is {1,3} and the ith element(interval) is {4,6}..
                 //then {1,3} will be pushed into ans and 4,6 will be set as the new left,right
             {
                 ans.push_back({left,right});

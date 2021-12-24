@@ -10,9 +10,6 @@
  */
 class Solution {
 public:
-    
-    
-    
     ListNode* insertionSortList(ListNode* head) {
         if(!head) return NULL;
         //creating a dummy node to connect before the head node, as it makes it easier to insert any node even if it wants to replace the head.
@@ -37,9 +34,6 @@ public:
             //shifting curr to the next value, that needs to be inserted in the current sorted order 
             curr = next;
         }
-        
         return preHead->next;
-        
-        
     }
 };

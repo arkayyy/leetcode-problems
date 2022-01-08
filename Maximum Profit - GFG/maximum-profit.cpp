@@ -9,6 +9,7 @@ using namespace std;
 
 class Solution {
   public:
+    //SEE PEPCODING VIDEO FOR REFERENCE:---- https://www.youtube.com/watch?v=3YILP-PdEJA
     int maxProfit(int K, int N, int A[]) {
         int dp[K+1][N];
         

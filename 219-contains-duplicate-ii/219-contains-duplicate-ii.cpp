@@ -5,11 +5,11 @@ public:
         
         for(int i=0;i<nums.size();i++)
         {
-            if(mp[nums[i]])
+            if(mp.find(nums[i])!=mp.end())
                 {
-                if(abs(i-mp[nums[i]]+1)<=k)
+                if(abs(i-mp[nums[i]])<=k)
                     return true;}
-            mp[nums[i]] = i+1;
+            mp[nums[i]] = i;
         }
         
         return false;

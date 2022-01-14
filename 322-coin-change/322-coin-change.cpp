@@ -8,11 +8,11 @@ public:
         
         if(dp[amount][idx]!=INT_MAX) return dp[amount][idx];
         
-        return dp[amount][idx] = min( dp[amount][idx] , min( 1+util( idx, coins, amount-coins[idx],dp) , util(idx+1,coins,amount,dp)) );       
+        return dp[amount][idx] = min( 1+util( idx, coins, amount-coins[idx],dp) , util(idx+1,coins,amount,dp));     
     }
     int coinChange(vector<int>& coins, int amount) {
         vector<vector<int>> dp(amount+1,vector<int>(coins.size()+1, INT_MAX));
-        sort(coins.begin(),coins.end());
+        
         int ans =  util(0,coins,amount, dp);
         
         return (ans==INT_MAX-1?-1:ans);

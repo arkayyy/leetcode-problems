@@ -2,8 +2,7 @@ class Solution {
 public:
     //SIMPLE MATHS
     int totalMoney(int n) {
-
-        int sumOf7 = 28;
+        
         int ans = 28;
         int toDecrease = 0;
         int toIncrease = 7;

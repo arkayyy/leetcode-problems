@@ -5,6 +5,7 @@ class MyHashMap
     // EXPLANATION: https://leetcode.com/problems/design-hashmap/discuss/1097755/JS-Python-Java-C%2B%2B-or-(Updated)-Hash-and-Array-Solutions-w-Explanation
 
 public:
+    // We are using a linked list based approach to reduce collisions that might happen in an array
     struct Node
     {
     public:

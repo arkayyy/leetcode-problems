@@ -1,6 +1,11 @@
 class Solution {
 public:
     bool wordPattern(string pattern, string s) {
+        //INTUITION: once mapping every word to corresponding character and once mapping every character to corresponding word
+        //This is because if at anytime we need to check both conditions: 
+        //(i)if two different words have different mapped characters, 
+        //(ii)and at the same time if two different characters have different mapped words
+        //If any condition fulfills we return false...
         unordered_map<char,string> pat;
         unordered_map<string,char> pat1;
         

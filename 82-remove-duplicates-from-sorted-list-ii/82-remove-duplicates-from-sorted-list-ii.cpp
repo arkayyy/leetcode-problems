@@ -30,9 +30,10 @@ public:
                 
                 prev->next = curr->next;
             }
-            else
+            else //when the current element is non-repeating
             {
-                prev = curr;
+                prev = curr; //main part: we are memorising the previous non-repeating node everytime and changing it onlyy when we find another non-repeating element next in the LL. 
+                //We won't change prev when we fina a repeating element.
             }
             curr = curr->next;
         }

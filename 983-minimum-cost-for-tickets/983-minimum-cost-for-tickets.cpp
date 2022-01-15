@@ -16,10 +16,35 @@ public:
         
         return dp[days[idx]] = mini; //memoizing solution
     }
+    
+    int utilDPTable(vector<int>& days, vector<int>& costs)
+    {
+        vector<int> dp (380,0);
+        
+        for(auto day: days)
+            dp[day] = costs[0];
+        for(int i = 1; i<366; i++)
+        {
+            if(!dp[i])
+                dp[i] = dp[i-1];
+            else{
+                int j = max(0,i-1);
+                dp[i] = dp[j] + costs[0]; //for single day pass
+                j = max(0,i-7);
+                dp[i] = min(dp[i],dp[j]+costs[1]); // for 7-day pass
+                j = max(0,i-30);
+                dp[i] = min(dp[i],dp[j]+costs[2]);//for 30-day pass
+            }
+        }
+        return dp[365];
+    }
 
     int mincostTickets(vector<int>& days, vector<int>& costs) {
-        vector<int> dp(380, -1);
-        return util(0,0,days,costs,dp);
+        
+        vector<int> dp(380, -1); //size can be any number greater than 356
+        //return util(0,0,days,costs,dp);
+        
+        return utilDPTable(days,costs);
         
     }
 };

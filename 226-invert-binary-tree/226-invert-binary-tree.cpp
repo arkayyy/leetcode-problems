@@ -11,6 +11,23 @@
  */
 class Solution {
 public:
+//     TreeNode* invertTreeIterative(TreeNode* root)
+//     {
+//         stack<TreeNode*> stk;
+//         stk.push(root);
+    
+//     while (!stk.empty()) {
+//         TreeNode* p = stk.top();
+//         stk.pop();
+//         if (p) {
+//             stk.push(p->left);
+//             stk.push(p->right);
+//             swap(p->left, p->right);
+//         }
+//         return root;
+//     }
+    // return root;
+    // }
     TreeNode* invertTree(TreeNode* root) {
         if(!root) return NULL;
         

@@ -3,6 +3,8 @@ public:
     //XXXXX - DFS WON'T WORK HERE, since all paths produce different min. value of steps needed
     //Even along with DP, the minimum value won't be memoized always, so we won't get correct answers by using wrongly memoized values...
     
+    //Explanation: https://leetcode.com/problems/open-the-lock/discuss/110230/BFS-solution-C%2B%2B
+    
     //Therefore, we use level order traversal using BFS. Every next level will store all the neighboring string combinations that have not already been visited or not a deadend...
     int openLock(vector<string>& deadends, string target) {
         int steps = 0;

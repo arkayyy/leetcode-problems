@@ -1,4 +1,10 @@
 class ExamRoom {
+    //EXPLANATION: https://leetcode.com/problems/exam-room/discuss/1199246/C%2B%2B%3A-Using-ordered-set
+   
+    //INTUITION: We can seat the student in 3 possibilities: at starting, in the middle of any two students, and at the last
+    //So we check for all the 3 conditions. Since the student has to be seated at maximum distance from other nnodes we have 
+    //to seat the student exactly at the middle of the longest empty chair chain present in the room. So our target is to find this
+    //longest empty chair chain. 
 private:
      int capacity;
      set<int> s;
@@ -14,7 +20,7 @@ public:
         {
             auto it = s.begin();
             
-            dist = *it;
+            dist = *it; //stores the iterator to index of first seated student ( the index starts from 0)
             //distance from the beginning
             if(dist==0) it++;
             

@@ -17,7 +17,7 @@ public:
         ListNode* curr = head;
         ListNode* prev = head;
         
-        bool headRepeats = false;
+        bool headRepeats = false; //if head node repeats we separate it at last (since we are initialising our prev node as head initially)
         if(head && head->next && head->val==head->next->val) headRepeats = true;
         
         while(curr && curr->next)

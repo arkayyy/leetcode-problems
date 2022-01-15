@@ -15,7 +15,7 @@ public:
         while(curr && curr->next)
         {
             ListNode* temp = curr;
-            while( curr->next && curr->val == curr->next->val)
+            while( curr->next && curr->val == curr->next->val) //moving until same continious elements are present
                 curr = curr->next;
             temp->next = curr->next;
             curr = curr->next;

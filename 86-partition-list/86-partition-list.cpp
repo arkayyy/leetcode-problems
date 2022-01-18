@@ -18,25 +18,26 @@ public:
         ListNode* curr = head;
         ListNode* tail = new ListNode(-1);
         
+        //checking starting nodes if they are >= x, then we continue till the first node less than x
         if(curr->val>=x)
         {
-            tail = curr;
+            tail = curr; //updating the starting point of the tail, that is going to be built
             ListNode* prev1 = NULL;
             while(curr && curr->val>=x)
             {
                 prev1=curr;
-                 curr = curr->next;
+                curr = curr->next;
             }
             prev1->next = NULL;
         }
         
-        ListNode* newHead = curr;
+        ListNode* newHead = curr; //newhead is at the first node encountered that has value < x
         
-        if(!newHead) return head; //if newhead is null, means all the elements right from starting are greater than x, so we directly return head
+        if(!newHead) return head; //if newhead is null, means all the elements from starting are greater than x, so we directly return head
         
         ListNode* tailc = tail;
         
-        while(tailc->next) tailc = tailc->next; //we forward to the tail node
+        while(tailc->next) tailc = tailc->next; //we forward to the lastmost node
         
         while(curr)
         {

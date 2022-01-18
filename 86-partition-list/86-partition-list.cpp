@@ -10,6 +10,7 @@
  */
 class Solution {
 public:
+    //INTUITION: We disconnect all nodes >= x from the current LL and connect them to a new LL. At last we connect both formed LLs.
     ListNode* partition(ListNode* head, int x) {
         if(!head || !head->next) return head;
         

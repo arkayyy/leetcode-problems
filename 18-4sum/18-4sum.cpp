@@ -15,18 +15,18 @@ public:
                     if((long long)nums[i]+nums[j]+nums[k]+nums[l]==(long long)target) 
                     {
                         ans.push_back({nums[i],nums[j],nums[k],nums[l]});
-                        // IMP: Processing the duplicates of number 3
+                        // IMP: Processing the duplicates of number 3 (since array is sorted all duplicates will be adjacent to each other consecutively)
                         while (k < l && nums[k] == ans.back()[2]) ++k;
-                        // IMP: Processing the duplicates of number 4
+                        // IMP: Processing the duplicates of number 4 (since array is sorted all duplicates will be adjacent to each other consecutively)
                         while (k < l && nums[l] == ans.back()[3]) --l;
                     }
                     else if((long long)nums[i]+nums[j]+nums[k]+nums[l]>(long long)target) l--;
                     else k++;
                 }
-                // IMP: Processing the duplicates of number 2
+                // IMP: Processing the duplicates of number 2 (since array is sorted all duplicates will be adjacent to each other consecutively)
                 while(j + 1 < nums.size() && nums[j + 1] == nums[j]) ++j;
             }
-            // IMP: Processing the duplicates of number 1
+            // IMP: Processing the duplicates of number 1 (since array is sorted all duplicates will be adjacent to each other consecutively)
             while (i + 1 < nums.size() && nums[i + 1] == nums[i]) ++i;
         }
         return ans;

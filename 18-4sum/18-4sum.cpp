@@ -5,6 +5,7 @@ public:
         vector<vector<int>> ans;
         //using 4-pointer technique...an extension to the 3-sum problem
         //The extension is that here we also handle all duplicate quadruplets that we might get
+        //This duplicates removal algo can also be used for 2-sum and 3-sum
         for(int i = 0; i<nums.size(); i++)
         {
             for(int j = i+1; j<nums.size(); j++)

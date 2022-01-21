@@ -13,12 +13,14 @@ public:
         
         for(auto n: s)
         {
-            if(prev==INT_MIN) {prev = n; continue;}
-            else if(n==prev+1) currSeq++;
-            else if(n!=prev+1) {longest = max(longest, currSeq); currSeq = 1;}
+            if(prev==INT_MIN) 
+                {prev = n; continue;}
+            else if(n==prev+1) 
+                currSeq++;
+            else if(n!=prev+1) 
+                {longest = max(longest, currSeq); currSeq = 1;}
             prev = n;
         }
-        if(currSeq==nums.size()) return currSeq;
         longest = max(longest, currSeq);
         return longest;
     }

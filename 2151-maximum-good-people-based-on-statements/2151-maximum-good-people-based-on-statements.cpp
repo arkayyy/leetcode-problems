@@ -3,17 +3,18 @@ public:
     bool isValid(vector<int>& curr, vector<vector<int>> & statements)
     {
         for(int i = 0; i<curr.size(); i++)
-            if(curr[i]==1)
+            if(curr[i]==1) //if a person is good, he will speak only truth
                 for(int j = 0; j<curr.size(); j++)
-                    if(statements[i][j]!=2 && statements[i][j]!=curr[j])
+                    if(statements[i][j]!=2 && statements[i][j]!=curr[j]) //if contradiction found to truth
                         return false;
         return true;
     }
     void dfs(int idx, int cnt, vector<int>& curr, int &ans, vector<vector<int>>& statements)
     {
-        if(idx==statements.size())
+        if(idx==statements.size()) 
         {
-            if(isValid(curr,statements)) ans = max(ans,cnt);
+            if(isValid(curr,statements))  //checking if no contradicition found
+                ans = max(ans,cnt);    
             return;
         }
         

@@ -7,8 +7,7 @@ public:
             ma = max(ma, a);
             mi = min(mi, a);
         }
-        if(mi<lower && ma>upper)
-            return 0;
+        
         return max(0L,(upper - lower) - (ma - mi) + 1);
     }
 };

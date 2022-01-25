@@ -8,18 +8,15 @@ public:
                 ans.push_back(curr);
             return;
         }
-        
-        int i = idx;
-        // while(i<nums.size())
-        // {
-            curr.push_back(nums[i]);
-            util(i+1,curr,nums,ans);
 
-            curr.pop_back();
-            while(i+1<nums.size() && nums[i]==nums[i+1]) i++;
-            util(i+1,curr,nums,ans);
-        //     i++;
-        // }
+        //including the current index element
+        curr.push_back(nums[idx]);
+        util(idx+1,curr,nums,ans);
+        //not including the current index element or any of its repetitions occuring after it
+        curr.pop_back(); //imp: backtracking step
+        while(idx+1<nums.size() && nums[idx]==nums[idx+1]) idx++;
+        util(idx+1,curr,nums,ans);
+
     }
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         vector<int> curr;

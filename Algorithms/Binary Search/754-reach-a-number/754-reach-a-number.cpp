@@ -27,7 +27,7 @@ public:
         long long diff = target - minPos;
         //if this difference is:-
         //1) 0(zero): no need of doing anything since we have already reached our target
-        //2) even : no need of doing anything, dry run and see that the second last step can be flipped in order to reach the target seamlessly
+        //2) even : no need of doing anything, dry run and see that any(one) last step can be flipped in order to reach the target seamlessly
         //3) odd: we need to convert this difference into even. 
         //---3.1)If minSteps taken is already odd, the next(additional) step would produce even distance, that means new distance from the target would be odd+even = odd distance again, so we need to do one more step to make this diff even. So 2 additional steps in total.
         //---3.2)If minSteps is even, the next(additional) step would product odd distance, so new distance from target = odd+odd = even. HURRAH! So 1 additional step in total.

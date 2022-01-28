@@ -18,15 +18,7 @@ public:
         
         int n = heights.size(), m = heights[0].size();
         
-        int lo = 0, hi;
-        int maxi= INT_MIN, mini = INT_MAX;
-        for(int i = 0; i<heights.size(); i++)
-        {
-            for(int j = 0; j<heights[0].size(); j++)
-            {
-                hi = max(hi, heights[i][j]);
-            }
-        }
+        int lo = 0, hi = INT_MAX;
         int ans;
         while(lo<=hi)
         {

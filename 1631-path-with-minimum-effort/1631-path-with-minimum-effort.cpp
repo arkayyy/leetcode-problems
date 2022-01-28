@@ -18,7 +18,7 @@ public:
         
         int n = heights.size(), m = heights[0].size();
         
-        int lo = 0, hi = INT_MAX;
+        int lo = 0, hi = INT_MAX;  
         int ans;
         while(lo<=hi)
         {
@@ -36,6 +36,6 @@ public:
             }
         }
         
-        return lo;
+        return ans;
     }
 };

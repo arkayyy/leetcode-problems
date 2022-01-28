@@ -4,7 +4,8 @@ public:
         vector<vector<string>> ans;
         //BFS of paths...
         unordered_set<string> wordSet(wordList.begin(), wordList.end());//will contain only those words which have not been visited yet
-        //wordSet.insert(endWord);
+       
+        if(wordSet.find(endWord)==wordSet.end()) return {}; //endword not there in dictionary
         
         queue<vector<string>> q; // will store levels/paths
         q.push({beginWord}); //first level consists only of beginWord

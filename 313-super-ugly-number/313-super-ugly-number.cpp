@@ -24,6 +24,7 @@ public:
         
         
         //--------------APPROACH - 2: DP APPROACH TC:O(NK) SC:O(N+K) ----------------------//
+        //use long long otherwise will result in TLE
         vector<long long> dp(n);
         dp[0] = 1;
         

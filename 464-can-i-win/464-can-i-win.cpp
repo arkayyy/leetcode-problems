@@ -21,7 +21,7 @@ public:
     bool canIWin(int maxChoosableInteger, int desiredTotal) {
         vector<vector<int>> dp(2, vector<int>((1<<maxChoosableInteger),-1));
         int mask = 0;
-        if(desiredTotal > (maxChoosableInteger*(maxChoosableInteger+1))/2) return false;
+        if(desiredTotal > (maxChoosableInteger*(maxChoosableInteger+1))/2) return false; //if all the integers within the given range can't be added to give the target too
         return dfs(0,0,desiredTotal,0,maxChoosableInteger,dp);
     }
 };

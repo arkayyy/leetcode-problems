@@ -6,7 +6,7 @@ public:
         string res = "0";
         for(auto ch: s)
         {
-            freq[ch]--;
+            freq[ch]--; //decreasing from the total frequency
             if(visited[ch]) continue;
             // ch < res.back() -> because we need the lexicographically least subsequence containing all unique letters in the string, so we keep popping until we get lexo least subsequence
             // freq[res.back()] > 0 -> because if freq[res.back()]==0 we know that no more of this character will occur next in the string, so we can't pop this, it's already part of lexo least subseq

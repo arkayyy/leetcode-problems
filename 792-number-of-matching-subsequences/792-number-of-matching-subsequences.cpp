@@ -24,7 +24,7 @@ public:
                         lastIndex = i;
                         break;
                     }
-                if(!f) {flag = true; break;}
+                if(!f) {flag = true; break;} //no suitable index in s available for this current character..So this word can't be counted
             }
             if(!flag) cnt++; 
         }

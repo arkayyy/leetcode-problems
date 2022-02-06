@@ -15,10 +15,10 @@ public:
         
         for(int i = 1; i<=n; i++)
         {
-            //Sequential moving ->>>
+            //Tabulating Sequential moving data->>>
             dp[0][i] = dp[0][i-1]+1; //if we move sequentially from previous index (i.e. by removing one car from the left pointer) 
             
-            //Non-sequential moving (i.e. removing illegal car from middle)->>>
+            //Tabulating Non-sequential moving data(i.e. removing illegal car from middle)->>>
             if(s[i-1]=='1')
                 dp[1][i] = min(dp[0][i-1],dp[1][i-1]) + 2; //signifies effect of removing current index car from the middle(non-sequentially) if it is illegal
             else

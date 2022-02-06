@@ -22,7 +22,7 @@ public:
             if(s[i-1]=='1')
                 dp[1][i] = min(dp[0][i-1],dp[1][i-1]) + 2; //signifies effect of removing current index car from the middle(non-sequentially) if it is illegal
             else
-                dp[1][i] = min(dp[0][i-1],dp[1][i-1]);
+                dp[1][i] = min(dp[0][i-1],dp[1][i-1]);//if car is not illegal we don't need to remove it, therefore no additional cost
             
             //computing best answer =  (best possible min. no. of moves upto i index) + only (sequential moves to the right of index i)
             ans = min(ans, min(dp[0][i],dp[1][i])+sequentialCostFromRight[i]);

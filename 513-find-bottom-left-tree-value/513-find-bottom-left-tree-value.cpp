@@ -14,11 +14,12 @@ public:
     void util(TreeNode* root, int depth, int& maxDepth, int& ans)
     {
         if(!root) return;
-        if(depth>maxDepth)
+        if(depth>maxDepth) //for every new level...
         {
             maxDepth  = depth;
-            if(!root->left && !root->right)
+            if(!root->left && !root->right) //we store only the first leaf node encountered at that level...
                 ans = root->val;
+            //This will give us the desired answer because below, we are first making recursive call towards root->left and then towards root->right, so at every new level the leftmost node will  be encountered first
         }
         
         util(root->left,depth+1,maxDepth,ans);

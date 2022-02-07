@@ -15,11 +15,11 @@ public:
     bool hasCycle(int n, unordered_map<int,int>& pos, unordered_map<int,vector<int>>& adj)
     {   
        for (int i = 0; i < n; i++) {
-        for (auto it : adj[i]) {
+        for (auto a : adj[i]) {
  
             // If parent vertex
             // does not appear first
-            if (pos[i] > pos[it]) {
+            if (pos[i] > pos[a]) {
  
                 // Cycle exists
                 return true;
@@ -66,7 +66,10 @@ public:
         
         
         //-------------------------APPROACH - 2: Topo sort using DFS -------------------------------------//
-         // pos tores the position of
+        
+        //Additional step in DFS: Cycle checking (done by first storing index of all nodes in topoligical sorted order, then verifying if any node appears before its parent does in the topo sorted order)
+        
+        // pos tores the position of
         // vertex in topological order
         unordered_map<int, int> pos;
         

@@ -52,8 +52,10 @@ public:
         //-------------------------APPROACH - 2: Topo sort using DFS (Coloring algo) -------------------------------------//
         //Intuition: We color the node according to its status:
         // 0 - not visited
-        // 1 - visited and its adj nodes are currently in process being traversed one by one 
+        // 1 - visited and its adj nodes are currently in process being DFS traversed one by one 
         // 2 - visited and all adjacents also traversed
+        
+        //So if a node is visited again while its adjacent's DFS traversal is in progress(i.e.its colored 1), a loop exists.
         
         vector<int> visited(numCourses);
         

@@ -35,8 +35,10 @@ public:
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
         vector<int> ans;
         
+        
         //----------------------APPROACH - 1: Topo sort using BFS (Kahn's Algorithm) -------------------//
-        //Using topological sort with BFS (Kahn's Algo):-
+        //Using topological sort with BFS (Kahn's Algo):- TC:O(N) SC: O(2N)
+        
         unordered_map<int,vector<int>> adj;
 //         queue<int> q;
 //         vector<int> inDegree(numCourses);
@@ -66,7 +68,7 @@ public:
         
         
         //-------------------------APPROACH - 2: Topo sort using DFS -------------------------------------//
-        
+        //TC:O(N) SC:O(2N)
         //Additional step in DFS: Cycle checking (done by first storing index of all nodes in topoligical sorted order, then verifying if any node appears before its parent does in the topo sorted order)
         
         // pos tores the position of

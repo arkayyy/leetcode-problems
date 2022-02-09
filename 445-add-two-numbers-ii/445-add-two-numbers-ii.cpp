@@ -10,6 +10,7 @@
  */
 class Solution {
 public:
+    //INTUITION: Reverse the LL's and add them from the beginning along with carry...
     ListNode* revLL(ListNode* head)
     {
         ListNode* prev = NULL;

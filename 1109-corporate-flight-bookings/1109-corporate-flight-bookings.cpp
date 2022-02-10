@@ -2,6 +2,7 @@ class Solution {
 public:
     //INTUITION: If we keep the value of seats at both the start and end index of an interval. 
     //While printing the final answer, we can print all the values in between these 2 indexes as the same value.
+    //We  can use the prefix sum method to get the final result vector...
     vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
         vector<int> ans(n+1,0);
         for(auto b: bookings)

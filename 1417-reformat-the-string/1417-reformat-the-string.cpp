@@ -1,38 +1,28 @@
 class Solution {
 public:
     string reformat(string s) {
-        stack<int> digits; //frequency of digits from 0-9
-        stack<char> chars;
-        for(auto ch:s)
-        {
-            if(ch-'a'>=0 && ch-'a'<26) chars.push(ch);
-            else digits.push(ch-'0');
-        }
-        
-        if( abs((int)digits.size()-(int)chars.size()) > 1) return "";
+        //------------------------MOST OPTIMAL APPROACH O(N) time-----------------------------//
+        int digits = 0, chars = 0; 
+        for(auto ch: s)
+            isdigit(ch)?digits++:chars++;
+        if(abs(digits-chars)>1) return "";
         
         string ans = "";
-        if(digits.size() > chars.size())
+        int i = 0, j = 0;
+        while(ans.length() < s.length())
         {
-            while(!digits.empty() && !chars.empty())
+            if((ans.size()%2) ^ (digits > chars)) //MAIN LINE: we do this in order to decide which one alphabet or digit will be added first in the result string...when no. of digits is more, we have to start with a digit..same for number of alphabets
+                //also the ans.size() checking even or odd always helps to place alphabets and digits in alternating sequence
             {
-                ans+=to_string(digits.top()); digits.pop();
-                ans+=chars.top(); chars.pop();
+                while(isalpha(s[j])) j++; 
+                ans+= s[j++];
             }
-            if(!digits.empty())
-            ans+=to_string(digits.top());
-        }
-        else
-        {
-            while(!digits.empty() && !chars.empty())
+            else
             {
-                ans+=chars.top(); chars.pop();
-                ans+=to_string(digits.top()); digits.pop();
+                while(isdigit(s[i])) i++;
+                ans+=s[i++];
             }
-            if(!chars.empty())
-            ans+=chars.top();
         }
-        
         return ans;
     }
 };

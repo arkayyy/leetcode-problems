@@ -24,20 +24,19 @@ class NumArray {
     }
 public:
     NumArray(vector<int>& nums) {
-        copy = nums;
         n = nums.size();
         fen.resize(n+1,0);
         for(int i = 0; i<n; i++)
-            updateFen(i+1,nums[i]);
+            updateFen(i+1,nums[i]); //i+1 is updated because 1 based indexing is followed
     }
     
     void update(int index, int val) {
-        updateFen(index+1, val-sumRange(index,index));
+        updateFen(index+1, val-sumRange(index,index)); //we are passing val-sumRange(index,index) which is same as val-nums[index]...we are passing the difference val-nums[i] because the elements to the right side of index in fenwick array need to be summed with this difference that is produced.
+        //because fenwick already stores sum of a range of elements
     }
     
     int sumRange(int left, int right) {
-        //if(left==right) return copy[left];
-        return sum(right+1)-sum(left);
+        return sum(right+1)-sum(left); //right+1 because 1 based indexing
     }
 };
 

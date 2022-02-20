@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxRotateFunction(vector<int>& nums) {
-        
+        //BITS OF MATHS:-
         
         vector<int> prefix(nums.size()+1,0);
         prefix[1] = nums[0];

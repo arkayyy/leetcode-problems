@@ -1,6 +1,8 @@
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        
+        //=========================O(N) APPROACH - Monotonic Stack/Queue ===========================//
         stack<int>st;
         
         unordered_map<int,int> mp;
@@ -8,7 +10,7 @@ public:
         for(int i = 0; i<nums2.size(); i++)
         {
             
-            while(!st.empty() && nums2[i]>st.top())
+            while(!st.empty() && nums2[i]>st.top()) //for aall elements in st smaller than nums2[i], nums2[i] will be the next greater elements for all such elements
             {
                 mp[st.top()] = nums2[i];
                 st.pop();

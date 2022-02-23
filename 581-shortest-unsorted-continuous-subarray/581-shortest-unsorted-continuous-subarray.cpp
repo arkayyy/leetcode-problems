@@ -1,7 +1,7 @@
 class Solution {
 public:
     int findUnsortedSubarray(vector<int>& nums) {
-        
+        int n = nums.size();
         stack<pair<int,int>> st;
         stack<pair<int,int>> st1;
         bool first = true;
@@ -21,21 +21,24 @@ public:
                 
             }
             st.push({nums[i],i});
-        }
-        
-        
-        for(int i =nums.size()-1; i>=0; i--)
-        {
-            if(!st1.empty() && nums[i]>st1.top().first)
+            
+            if(!st1.empty() && nums[n-i-1]>st1.top().first)
             {
-                while(!st1.empty() && nums[i]>st1.top().first)
+                while(!st1.empty() && nums[n-i-1]>st1.top().first)
                 {
                     lastViolation = max(lastViolation,st1.top().second); 
                     st1.pop();
                 }
             }
-            st1.push({nums[i],i});
+            st1.push({nums[n-i-1],n-i-1});
+        
         }
+        
+        
+//         for(int i =nums.size()-1; i>=0; i--)
+//         {
+            
+//         }
         
         int ans =  (lastViolation - firstViolation +1);
         

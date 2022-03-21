@@ -1,7 +1,7 @@
 class MyQueue {
 public:
-    stack<int> st1;
-    stack<int> st2;
+    stack<int> st1; //used mainly for push 
+    stack<int> st2; //used mainly for peeking or popping
     
     MyQueue() {
         

@@ -1,6 +1,8 @@
 class Solution {
 public:
     string getSmallestString(int n, int k) {
+        //INTUITION: We take an "aaa..." of length n (with initial numeric value = 1*n) string initially and start increasing each character from the end, till the total numeric value < k
+        //This will make a lexicographically least string since we are increasing from the end
         string ans =  "";
         for(int i = 0; i<n; i++)
         {

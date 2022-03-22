@@ -4,6 +4,7 @@
 
 class Solution {
 public:
+    //EXPLANATION: https://leetcode.com/problems/implement-rand10-using-rand7/discuss/150301/Three-line-Java-solution-the-idea-can-be-generalized-to-%22Implement-RandM()-Using-RandN()%22
     int rand10() {
         int res = 40;
         while(res>=40)

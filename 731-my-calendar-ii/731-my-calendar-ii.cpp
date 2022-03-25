@@ -9,8 +9,8 @@ public:
     //INTUITION: Similar to interview scheduling type problems (like interview scheduling, corporate flight booking)
     
     //ALGO: We increase the count of every point of time when a booking start date is, and decrease the count of every point when a booking end date is.
-    //So the recurring sum of these counts will denote the recurring number of bookings at any specific time.
-    //At any time, if this sum==3, then we return false and also delete the entry of this booking
+    //So the recurring sum of these counts will denote the recurring number of bookings at any specific point of time.
+    //At any point of time, if this sum==3, then we return false and also delete the entry of this booking
     bool book(int start, int end) {
         bookings[start]++;
         bookings[end]--;

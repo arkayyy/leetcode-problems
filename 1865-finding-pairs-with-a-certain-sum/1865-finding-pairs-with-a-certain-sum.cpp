@@ -1,7 +1,7 @@
 class FindSumPairs {
     //INTUITION: If we can keep storing and updating frequencies of elements, we can count number of pairs at each call.
     
-    //ALGO: Using two maps for both group of numbers, we can count the total suitable pairs by finding difference of (total-(element from a map)) in other map
+    //ALGO: Using two maps for both group of numbers, we can count the total suitable pairs by finding frequency of the difference(i.e. (total-(element from a map)) ) in other map
     private:
     vector<int> nums2New; //to store updated values
     map<int,int> mp1; //taking ordered map for first group of numbers so that we can avoid extra traversal of elements>=total, while counting pairs

@@ -35,6 +35,7 @@ public:
                     return false;
                 (*m).second = 0 ;
                 pos[num/2] -= freq;
+				if(pos[num/2]==0) pos.erase(num/2);
             }
         }
         
@@ -52,6 +53,7 @@ public:
                 
                 (*m).second = 0 ;
                 neg[num/2] -= freq;
+				if(neg[num/2]==0) neg.erase(num/2);
             }
         }
 

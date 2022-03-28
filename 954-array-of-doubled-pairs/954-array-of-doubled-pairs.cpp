@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool canReorderDoubled(vector<int>& arr){
-        //INTUITION: keep pairing every even number with its half. If nos. are left return false!
+        //INTUITION: keep pairing every even number with its half. If nos. are left which can't be paired return false!
       
         //ALGO: store frequencies in a map and keep decreasing as nos. are paired
         

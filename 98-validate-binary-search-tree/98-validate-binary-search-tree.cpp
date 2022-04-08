@@ -14,7 +14,7 @@ class Solution {
 public:
     //INTUITION: Every node in a binary search tree must lie within a range that has been fixed by its ancestor nodes.
     //ALGO: So we take a left range and right range and keep updating it differently as we traverse to the left and right of a node.
-    bool util(TreeNode* root, ll leftLim,ll rightLim)
+    bool util(TreeNode* root, ll leftLim,ll rightLim)//NOTE: limits are taken as long long because a node's value can be INT_MAX or INT_MIN too, so they can't be initially taken as limits
     {
         if(!root) return true;
         

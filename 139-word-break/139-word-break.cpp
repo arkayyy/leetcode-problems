@@ -15,25 +15,25 @@ public:
     }
     bool wordBreak(string s, vector<string>& wordDict) {
         //----------1. Recursion with memoization (optimal) ----------------//
-        vector<int> mem(s.size(),-1);
+        // vector<int> mem(s.size(),-1);
          unordered_set<string> words(wordDict.begin(), wordDict.end());
-        return canBrk(0,s,words,mem);
+        // return canBrk(0,s,words,mem);
         
         //--------2. DP Tabulation (most optimal) ------------------------------//
-        // int n = s.size();
-        // vector<bool> dp(n+1);
-        // dp[n]=1;
-        // for(int i=n-1;i>=0;i--) {
-        //     string sub = "";
-        //     for(int j=i;j<n;j++) 
-        //     {
-        //         sub+=s[j];
-        //         dp[i] = words.count(sub);
-        //         if (dp[i] && dp[j+1]) 
-        //             break;
-        //     }
-        // }
-        // return dp[0]; 
+        int n = s.size();
+        vector<bool> dp(n+1);
+        dp[n]=1;
+        for(int i=n-1;i>=0;i--) {
+            string sub = "";
+            for(int j=i;j<n;j++) 
+            {
+                sub+=s[j];
+                dp[i] = words.count(sub);
+                if (dp[i] && dp[j+1]) 
+                    break;
+            }
+        }
+        return dp[0]; 
         
         //----------3. BFS (most optimal) ---------------------------------//
         // queue<int> q({0});

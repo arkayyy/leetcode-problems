@@ -6,7 +6,6 @@ public:
         sort(temp.begin(), temp.end(), [](const string &s1, const string &s2){return s1+s2>s2+s1;});
         string ans = "";
         for(auto t: temp) ans+=t;
-        while(ans[0]=='0' && ans.length()>1) ans.erase(0,1);
-        return ans;
+        return ans[0]=='0'?"0":ans;
     }
 };

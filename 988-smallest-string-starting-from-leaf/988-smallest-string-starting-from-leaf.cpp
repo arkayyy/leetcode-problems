@@ -13,7 +13,7 @@ class Solution {
 public:
     //INTUITION: We are making all possible leaf-to-root strings and storing the minimum in ans
     void util(TreeNode *root, string curr, string& ans){
-        if(root->left==NULL && root->right==NULL){
+        if(!root->left && !root->right){
             curr.push_back(root->val+'a');
             reverse(curr.begin(),curr.end());  //reversing the string in the end to make it leaf-to-root, from root-to-leaf
             ans=min(ans,curr);

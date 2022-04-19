@@ -15,10 +15,10 @@ public:
     {
         if(!root) return NULL;
         bool toDelete = deleted.find(root->val)!=deleted.end();
-        if(isRoot && !toDelete) ans.push_back(root);
-        root->left = util(root->left, ans, deleted, toDelete);
+        if(isRoot && !toDelete) ans.push_back(root); //if the current node is a root node and it is not supposed to be deleted, it will stay in our final answer tree
+        root->left = util(root->left, ans, deleted, toDelete); //toDelete is passed as isRoot for the child node of current node, because if current node is to be deleted, the child node will be the new root node
         root->right = util(root->right, ans, deleted, toDelete);
-        return toDelete?NULL:root;
+        return toDelete?NULL:root; //if current node is to be deleted, we return NULL in place of it
     }
     vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) {
         set<int> deleted;

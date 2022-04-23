@@ -1,12 +1,12 @@
 class Solution {
     private:
     //simple arithmetic hashing using a prime no., can use any hashing algo
-    uint64_t hash_function(const string& str) {
-        uint64_t hash = 0x811c9dc5;
-        uint64_t prime = 0x1000193;
+    unsigned int hash_function(const string& str) {
+        unsigned int hash = 67;
+        unsigned int prime = 79;
 
         for(int i = 0; i < str.size(); ++i) {
-            uint8_t value = str[i];
+            int value = str[i];
             hash = hash ^ value;
             hash *= prime;
         }

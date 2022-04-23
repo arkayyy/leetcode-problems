@@ -1,6 +1,6 @@
 class Solution {
     private:
-    //simple arithmetic hashing using a prime no.
+    //simple arithmetic hashing using a prime no., can use any hashing algo
     uint64_t hash_function(const string& str) {
         uint64_t hash = 0x811c9dc5;
         uint64_t prime = 0x1000193;

@@ -1,6 +1,6 @@
 class Solution {
 public:
-    //INTUITION: Since the constraints for y coordinates is less (only upto 100), So for every y coordinate we store all associated x coordinates of a rectangle
+    //INTUITION: Since the constraints for y coordinates is less (only upto 100), So for every y coordinate we store all associated x coordinates of the upper corners of the rectangles
     //Later for every point, we check for every y coordinate between that point's y coordinate and 100, and their possible x coordinates in rectangle for containing the point
     vector<int> countRectangles(vector<vector<int>>& rectangles, vector<vector<int>>& points) {
         unordered_map<int,vector<int>> mp;

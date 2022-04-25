@@ -19,6 +19,7 @@
 
 class PeekingIterator : public Iterator {
 public:
+    //INTUITION: At every step we store/cache if next element exists and thus the next element value
     int nextVal;
     bool haveNext;
 	PeekingIterator(const vector<int>& nums) : Iterator(nums) {

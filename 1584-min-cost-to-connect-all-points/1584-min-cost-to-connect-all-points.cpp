@@ -1,6 +1,6 @@
 class Solution {
 public:
-    //INTUITION: We store and process all edges in greedy fashion, trying to eliminate the one with most dist. at first
+    //INTUITION: We store and process all edges in greedy fashion, trying to eliminate the one with most dist. at first (to create Minimum Spanning Tree)
     int getParent(vector<int>& parents, int idx){
         if(parents[idx]==idx){
             return idx;

@@ -1,6 +1,6 @@
 class Solution {
 public:
-    //COMPLETE EXPLANATION: 
+    //COMPLETE EXPLANATION: https://github.com/arkayyy/leetcode-problems/tree/main/4-median-of-two-sorted-arrays
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         int len1 = nums1.size(), len2 = nums2.size();
         if(len1<len2) return findMedianSortedArrays(nums2,nums1); //always taking nums2 as shorter array since we perform binary searching opn on it

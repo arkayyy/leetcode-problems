@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //INTUITION: Sliding window with frequency mapping...
+    //ALGO: We take frequency of all characters in t, and then find such windows in s meeting the criteria by sliding window using 2 pointers
     string minWindow(string s, string t) {
         vector<int> freq(256,0);
         for(auto ch:t) ++freq[ch]; //marking all characters that need to be found in s

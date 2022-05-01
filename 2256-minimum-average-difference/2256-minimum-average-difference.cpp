@@ -3,6 +3,7 @@ public:
     
     int minimumAverageDifference(vector<int>& nums) {
         vector<long long> prefix(nums.size(),0); //can also be done in O(1) space, instead of takign a prefix sum array we can take one single sum variable
+        //then we can keep including one element in left half and eliminate one element from right half, and calc the avg difference at every step
         for(int i = 0; i<nums.size(); i++)
             prefix[i] = (i>0?prefix[i-1]:0)+nums[i];
         int minDiff = INT_MAX;
@@ -18,20 +19,6 @@ public:
             ans = nums.size()-1;
         return ans;
         
-        //Space optimised:-
-        // long long leftCnt = 0, sumLeft = 0;
-        // long long rightCnt = nums.size(), sumRight = accumulate(nums.begin(), nums.end(),0);
-        // long long minDiff = LLONG_MAX, idx = 0;
-        // for(int i = 0; i<nums.size(); i++)
-        // {
-        //     sumLeft += nums[i]; ++leftCnt;
-        //     sumRight -= nums[i]; --rightCnt;
-        //     if(abs((sumLeft/leftCnt) - (sumRight/max(rightCnt,(long long)1))) < minDiff)
-        //     {
-        //         minDiff = abs((sumLeft/leftCnt) - (sumRight/max(rightCnt,(long long)1)));
-        //         idx = i;
-        //     }   
-        // }
-        // return (int)idx;
+    
     }
 };

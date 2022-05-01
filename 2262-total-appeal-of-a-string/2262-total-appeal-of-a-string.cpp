@@ -5,7 +5,7 @@ public:
     long long appealSum(string s) {
     long long res = 0, cur = 0, prev[26] = {};
     for (int i = 0; i < s.size(); ++i) {
-        cur += i  - prev[s[i] - 'a'] + 1; //length of string b/w ith index and the index of previous occurence of same character at ith index
+        cur += i  - prev[s[i] - 'a'] + 1; //length of substring b/w ith index and the index of previous occurence of same character at ith index
         prev[s[i] - 'a'] = i + 1; //marking the current occurence of this character as previous occurence index for the next occuring same character
         res += cur;
     }

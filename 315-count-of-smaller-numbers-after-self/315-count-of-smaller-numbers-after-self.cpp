@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //INTUITION: Similar to problems like Reverse Pairs, which can all be solved using Merge Sort.
     vector<int> ans;
     vector<pair<int,int>> temp;
     void merge(int l, int m, int r, vector<pair<int,int>>& nums)

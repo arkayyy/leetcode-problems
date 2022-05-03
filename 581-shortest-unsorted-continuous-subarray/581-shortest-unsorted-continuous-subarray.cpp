@@ -8,7 +8,6 @@ public:
         //A monotonic queue/deque can also be used...
         int n = nums.size();
         stack<pair<int,int>> st;
-        stack<pair<int,int>> st1;
         bool first = true;
         
         int firstViolation = nums.size(), lastViolation = -1;
@@ -29,19 +28,20 @@ public:
             }
             st.push({nums[i],i});
         }
+        while(!st.empty()) st.pop();//reinitialising empty stack
         
         //finding the first violation from the end(or the last violation)
         for(int i =nums.size()-1; i>=0; i--)
         {
-            if(!st1.empty() && nums[i]>st1.top().first)
+            if(!st.empty() && nums[i]>st.top().first)
             {
-                while(!st1.empty() && nums[i]>st1.top().first)
+                while(!st.empty() && nums[i]>st.top().first)
                 {
-                    lastViolation = max(lastViolation,st1.top().second); 
-                    st1.pop();
+                    lastViolation = max(lastViolation,st.top().second); 
+                    st.pop();
                 }
             }
-            st1.push({nums[i],i});
+            st.push({nums[i],i});
          }
         
         int ans =  (lastViolation - firstViolation +1);

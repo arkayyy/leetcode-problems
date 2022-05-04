@@ -19,13 +19,16 @@ public:
     }
     int rob(vector<int>& nums) {
         if(nums.size()==1 || nums.size()==2) return *max_element(nums.begin(),nums.end());
+        
+        //=================================APPROACH 1: Recursion+Memo O(N) Time O(N)+O(N)aux space===========================//
         // vector<int> dp(nums.size(), -1);
         // int zero = util(0,nums.size()-1, nums,dp); //rob houses from 0th index to n-2th (2nd last index) ...here n-1 is just the limit for terminating recursion
         // fill(dp.begin(),dp.end(),-1);
         // int one = util(1,nums.size(),nums,dp);//from 1st index to n-1th(last) index.here n is just the limit for terminating recursion
         // return max(zero,one);
         
-        //Tabulation DP(Bottom up):-
+        
+        //==================================APPROACH 2: Tabulation DP(Bottom up) O(N) Time O(N) Space===========================//:-
 //         vector<int> dp(nums.size()+1);
 //         dp[nums.size()] = 0;
 //         dp[nums.size()-1] = nums.back();
@@ -40,7 +43,7 @@ public:
         
 //         return max(ans,dp[0]);
         
-        //Space optimized DP:-
+        //==============================APPROACH 3: Space optimized DP O(N) Time O(1) Space===================================//:-
         int skipNext = 0, dontSkipNext = nums.back(),curr;
         for(int i = nums.size()-2; i>=1; i--)
             {curr = max(nums[i]+skipNext, dontSkipNext); skipNext = dontSkipNext; dontSkipNext = curr;}

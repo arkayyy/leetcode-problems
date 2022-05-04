@@ -16,14 +16,21 @@ public:
         // vector<int> dp(n,-1);
         // return min(util(0,n,cost,dp),util(1,n,cost,dp));
         
-        vector<int> dp(n+1,-1);
-        //dp[n+1] = 0;
-        dp[n] = 0;
-        dp[n-1] = cost[n-1];
+        //Tabulation DP (Bottom up):-
+//         vector<int> dp(n+1,-1);
+//         dp[n] = 0;
+//         dp[n-1] = cost[n-1];
         
+//         for(int i = n-2; i>=0; i--)
+//             dp[i] = min(cost[i]+dp[i+1], cost[i]+dp[i+2]);
+        
+//         return min(dp[0],dp[1]);
+        
+        //Space optimised DP:-
+        int twoStep = 0, oneStep = cost[n-1], curr;
         for(int i = n-2; i>=0; i--)
-            dp[i] = min(cost[i]+dp[i+1], cost[i]+dp[i+2]);
+            {curr = min(cost[i]+oneStep, cost[i]+twoStep); twoStep = oneStep; oneStep = curr; }
         
-        return min(dp[0],dp[1]);
+        return min(oneStep, twoStep);
     }
 };

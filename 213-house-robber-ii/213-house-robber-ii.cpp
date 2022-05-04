@@ -18,10 +18,24 @@ public:
     }
     int rob(vector<int>& nums) {
         if(nums.size()==1 || nums.size()==2) return *max_element(nums.begin(),nums.end());
-        vector<int> dp(nums.size(), -1);
-        int zero = util(0,nums.size()-1, nums,dp); //rob houses from 0th index to n-2th (2nd last index) ...here n-1 is just the limit for terminating recursion
-        fill(dp.begin(),dp.end(),-1);
-        int one = util(1,nums.size(),nums,dp);//from 1st index to n-1th(last) index.here n is just the limit for terminating recursion
-        return max(zero,one);
+        // vector<int> dp(nums.size(), -1);
+        // int zero = util(0,nums.size()-1, nums,dp); //rob houses from 0th index to n-2th (2nd last index) ...here n-1 is just the limit for terminating recursion
+        // fill(dp.begin(),dp.end(),-1);
+        // int one = util(1,nums.size(),nums,dp);//from 1st index to n-1th(last) index.here n is just the limit for terminating recursion
+        // return max(zero,one);
+        
+        vector<int> dp(nums.size()+1);
+        dp[nums.size()] = 0;
+        dp[nums.size()-1] = nums.back();
+        for(int i = nums.size()-2; i>=1; i--)
+            dp[i] = max(nums[i]+dp[i+2], dp[i+1]);
+        int ans = dp[1];
+        
+        dp[nums.size()-1] = 0;
+        dp[nums.size()-2] = nums[nums.size()-2];
+        for(int i = nums.size()-3; i>=0; i--)
+            dp[i] = max(nums[i]+dp[i+2], dp[i+1]);
+        
+        return max(ans,dp[0]);
     }
 };

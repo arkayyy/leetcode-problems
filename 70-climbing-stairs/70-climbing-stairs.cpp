@@ -12,6 +12,9 @@ public:
         return dp[n] = climbStairs(n-1)+climbStairs(n-2);
     }
     int climbStairs(int n) {
+        
+        if(n==1||n==2) return n;
+        
         //Tabulation DP:-
 //         vector<int> dp(n+1,-1);
         
@@ -23,7 +26,7 @@ public:
 //         return dp[n]+dp[n-1];
         
         //Space optimised DP:-
-        if(n==1||n==2) return n;
+        
         int prev2 = 0, prev1 = 1;
         int curr = 0;
         for(int i = 2; i<=n; i++)

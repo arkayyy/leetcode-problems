@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //Recursion + Memoization -> Top-Down (going from 0th or 1st index to last). So in bottom-up approach we'll do the opposite!
     int util(int i, int n, vector<int>& cost,vector<int>&dp)
     {
         if(i>=n) return 0;
@@ -9,8 +10,20 @@ public:
         return dp[i] = min(cost[i]+util(i+1,n,cost,dp), cost[i]+util(i+2,n,cost,dp));
     }
     int minCostClimbingStairs(vector<int>& cost) {
+    
         int n = cost.size();
-        vector<int> dp(n,-1);
-        return min(util(0,n,cost,dp),util(1,n,cost,dp));
+        if(n==2) return *min_element(cost.begin(), cost.end());
+        // vector<int> dp(n,-1);
+        // return min(util(0,n,cost,dp),util(1,n,cost,dp));
+        
+        vector<int> dp(n+1,-1);
+        //dp[n+1] = 0;
+        dp[n] = 0;
+        dp[n-1] = cost[n-1];
+        
+        for(int i = n-2; i>=0; i--)
+            dp[i] = min(cost[i]+dp[i+1], cost[i]+dp[i+2]);
+        
+        return min(dp[0],dp[1]);
     }
 };

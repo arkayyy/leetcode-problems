@@ -4,6 +4,7 @@ class Solution {
     
     //ALGO: So we can either rob houses from 0th index to n-2th (2nd last index) OR from 1st index to n-1th(last) index. Max between both is our answer.
 public:
+    
     //Recursion + Memoization (Top Down) -> Going from left to right and memoizing. So in bottom up/tabulation we will go in opposite direction!
     int util(int i, int n, vector<int> &nums, vector<int>&dp)
     {
@@ -24,18 +25,30 @@ public:
         // int one = util(1,nums.size(),nums,dp);//from 1st index to n-1th(last) index.here n is just the limit for terminating recursion
         // return max(zero,one);
         
-        vector<int> dp(nums.size()+1);
-        dp[nums.size()] = 0;
-        dp[nums.size()-1] = nums.back();
+        //Tabulation DP(Bottom up):-
+//         vector<int> dp(nums.size()+1);
+//         dp[nums.size()] = 0;
+//         dp[nums.size()-1] = nums.back();
+//         for(int i = nums.size()-2; i>=1; i--)
+//             dp[i] = max(nums[i]+dp[i+2], dp[i+1]);
+//         int ans = dp[1];
+        
+//         dp[nums.size()-1] = 0;
+//         dp[nums.size()-2] = nums[nums.size()-2];
+//         for(int i = nums.size()-3; i>=0; i--)
+//             dp[i] = max(nums[i]+dp[i+2], dp[i+1]);
+        
+//         return max(ans,dp[0]);
+        
+        //Space optimized DP:-
+        int skipNext = 0, dontSkipNext = nums.back(),curr;
         for(int i = nums.size()-2; i>=1; i--)
-            dp[i] = max(nums[i]+dp[i+2], dp[i+1]);
-        int ans = dp[1];
+            {curr = max(nums[i]+skipNext, dontSkipNext); skipNext = dontSkipNext; dontSkipNext = curr;}
+        int ans = curr;
         
-        dp[nums.size()-1] = 0;
-        dp[nums.size()-2] = nums[nums.size()-2];
+        skipNext = 0, dontSkipNext = nums[nums.size()-2];
         for(int i = nums.size()-3; i>=0; i--)
-            dp[i] = max(nums[i]+dp[i+2], dp[i+1]);
-        
-        return max(ans,dp[0]);
+            {curr = max(nums[i]+skipNext, dontSkipNext); skipNext = dontSkipNext; dontSkipNext = curr;}
+        return max(ans,curr);
     }
 };

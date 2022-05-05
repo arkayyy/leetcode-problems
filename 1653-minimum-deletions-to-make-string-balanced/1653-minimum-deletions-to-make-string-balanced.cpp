@@ -22,17 +22,20 @@ public:
     }
     int minimumDeletions(string s) {
         // return util(0,false,false,s);
+        
+        //============================Tabulation DP Approach O(N) Time O(N) Space==============================//
         vector<int> dp(s.size()+1);
         int b = 0;
-        for(int i = 0; i<s.size(); i++)
+        dp[0] = 0;
+        for(int i = 1; i<=s.size(); i++)
         {
-            if(s[i]=='a')
+            if(s[i-1]=='a')
             {
-                dp[i+1] = min(1+dp[i],b);
+                dp[i] = min(1+dp[i-1],b); //
             }
             else
             {
-                dp[i+1] = dp[i], ++b;
+                dp[i] = dp[i-1], ++b;
             }
         }
         return dp[s.size()];

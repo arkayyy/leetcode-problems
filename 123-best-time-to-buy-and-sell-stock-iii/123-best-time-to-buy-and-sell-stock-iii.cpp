@@ -88,7 +88,7 @@ public:
                 //e.g. we have all 4 transactions left means, we can only buy share. 
                 //and when we have 3 left, means we have already bought one, so we can only sell before we buty another.
                 if(shouldBuy)
-                    buy = -prices[days]+dp[(days+1)%2][t-1];
+                    buy = -prices[days]+dp[(days+1)%2][t-1]; //dp[(days+1)%2][t-1] denotes the max profit that has been earned before curr transaction (upto t-1 transactions)
                 else
                     buy = prices[days]+dp[(days+1)%2][t-1];
 

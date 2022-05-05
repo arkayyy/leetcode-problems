@@ -13,5 +13,9 @@ public:
                     { allZeros = false; ans = max(ans, dp[i][j] = 1+min({dp[i-1][j], dp[i][j-1], dp[i-1][j-1]}) );}
         
         return allZeros?0:(ans*ans);
+
+        //Space optimized DP:-
+
+        
     }
 };

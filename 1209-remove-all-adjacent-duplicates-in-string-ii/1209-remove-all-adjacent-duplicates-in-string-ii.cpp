@@ -1,6 +1,8 @@
 class Solution {
 public:
     string removeDuplicates(string s, int k) {
+        
+        //============================APPROACH 1: Stack based frequency counting O(2N) Time O(N) Space===================//
         stack<pair<char,int>> st;
         for(auto c: s)
         {

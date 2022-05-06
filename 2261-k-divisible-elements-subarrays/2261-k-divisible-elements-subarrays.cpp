@@ -5,7 +5,7 @@ public:
     int countDistinct(vector<int>& nums, int k, int p) {
 
         int n=nums.size();
-        unordered_set<string>s;
+        set<string>s;
 
         for(int i=0;i<n;i++)
         {

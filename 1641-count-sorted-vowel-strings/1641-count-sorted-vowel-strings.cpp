@@ -18,7 +18,7 @@ public://Top down: i-> 0 to 5 AND n->n to 0
         // vector<vector<int>> dp(n+1, vector<int> (5));
         // return util(0,n,vowels, dp);
         
-        //====================APPROACH 2: Space Optimized Tabulation DP ==============================//
+        //====================APPROACH 2: Space Optimized Tabulation DP O(5*N) Time O(1) Space ==============================//
         vector<int> dp(5,1);
         for(int i = 0; i<n; i++)
             for(int j = 1; j<5; j++)

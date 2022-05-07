@@ -1,5 +1,9 @@
 class Solution {
 public:
+    //INTUITION: Similar to LC221-Maximal Sqaure in a matrix
+    //Everytime we have a chance to expand the square we do that. And we keep adding the total no. of sqaures made using each 1 in the grid.
+    
+    //See notes for visual explanation...
     int countSquares(vector<vector<int>>& matrix) {
         int squares = 0;
         for(int i = 0; i<matrix.size(); i++)

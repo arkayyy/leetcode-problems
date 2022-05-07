@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //INTUITION: At every land, the perimeter would be reduced only at the side where land is present...
     int islandPerimeter(vector<vector<int>>& grid) {
         int peri=0;
         for(int i = 0; i<grid.size(); i++)

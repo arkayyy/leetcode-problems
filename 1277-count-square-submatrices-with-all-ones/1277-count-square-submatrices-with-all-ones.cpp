@@ -15,24 +15,6 @@ public:
             }
         return squares;
         
-        
-        //Space optimised DP (ERROR):-
-//         vector<vector<int>> dp(2,vector<int>(matrix[0].size(), 0));
-//         for(int j = 0; j<matrix[0].size(); j++)
-//             if(matrix[0][j]==1) {dp[0][j] = 1; ++squares;}
-    
-//         for(int i = 1; i<matrix.size(); i++)
-//         {
-//             for(int j = 0; j<matrix[0].size(); j++)
-//             {
-//                 if(matrix[i][j]==0) continue;
-//                 if(j==0) {dp[1][j] = 1;  ++squares; }
-//                 else squares+=(dp[1][j] = 1 + min({dp[0][j], dp[1][j-1], dp[0][j-1]}));
-//             }
-//             dp[0] = dp[1];
-//         }
-
-//         return squares;
     }
     
 };

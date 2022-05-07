@@ -7,7 +7,7 @@ public:
             {
                 if(matrix[i][j]==0) continue;
                 if(i==0 || j==0) ++squares;
-                else squares+=(matrix[i][j]+=min({matrix[i-1][j], matrix[i][j-1], matrix[i-1][j-1]}));
+                else squares+=(matrix[i][j]=1+min({matrix[i-1][j], matrix[i][j-1], matrix[i-1][j-1]}));
             }
         return squares;
     }

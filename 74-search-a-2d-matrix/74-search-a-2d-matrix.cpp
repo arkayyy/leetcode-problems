@@ -29,6 +29,7 @@ public:
         
         
         //=======================APPROACH 2: select both row and col by binary search O(logM + log N) Time O(1) Space=======================//
+        //EDGE cases: 1 row, OR 1 column, OR the value outside the highest or lowest range in the matrix
         int n = matrix.size(), m = matrix[0].size();
         int lo = 0, hi = n-1;
         while(n>1 && lo<=hi)
@@ -41,6 +42,7 @@ public:
                 hi = mid - 1;
         }
         if(lo>=n) return false;
+        
         int row = lo;
         lo = 0, hi = m-1; 
         while(m>1 && lo<=hi)

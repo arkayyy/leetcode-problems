@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //INTUITION: Binary Exponentiation...
     double myPow(double x, int n) {
         //Iterative:-
         // double res = 1;

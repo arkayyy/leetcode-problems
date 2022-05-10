@@ -1,27 +1,16 @@
 class Solution {
 public:
+    //INTUITION & ALGO: We store all elements in a hash set and then check for sequences starting from every element...
     int longestConsecutive(vector<int>& nums) {
-        
-        if(nums.size()==0 || nums.size()==1) return nums.size();
-        set<int> s;
-        for(auto n: nums)
-            s.insert(n);
-        
+        unordered_set<int> s(nums.begin(),nums.end());
         int longest = 0;
-        int prev = INT_MIN;
-        int currSeq = 1;
-        
         for(auto n: s)
         {
-            if(prev==INT_MIN) 
-                {prev = n; continue;}
-            else if(n==prev+1) 
-                currSeq++;
-            else if(n!=prev+1) 
-                {longest = max(longest, currSeq); currSeq = 1;}
-            prev = n;
+            if(s.find(n-1)!=s.end()) continue; //e.g. if current element is already a part of a longer sequence 
+            int j = 1; 
+            while(s.find(n+j)!=s.end()) j++;
+            longest = max(j,longest);
         }
-        longest = max(longest, currSeq);
         return longest;
     }
 };

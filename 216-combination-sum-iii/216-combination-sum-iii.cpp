@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //INTUITION & ALGO: Simple backtracking concept...take a number or don't take it and move forward
     void util(int i, int k, int n, vector<int>& res, vector<vector<int>>& ans)
     {
         if(n==0 && k==0)

@@ -1,8 +1,6 @@
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
-        
-        //----------------------------------APPROACH 2-----------------------------------//
         //ALGO: Monotonic stack (maintaining increasing order from bottom to top)
         
         //MOST OPTIMAL TC:O(N)+O(N) SC:O(N) Single Pass Approach:-
@@ -11,7 +9,7 @@ public:
         
         for(int i = 0; i<=heights.size(); i++)
         {
-            while(!st.empty() && ( i==heights.size() || heights[st.top()]>=heights[i] )) 
+            while(!st.empty() && ( i==heights.size() || heights[st.top()]>=heights[i] )) //the i==heights.size() condition is for the edge case when the input array is like [1,2,3,4,5]
             {
                 int height = heights[st.top()]; //for this height at index = st.top(), heights[i] at ith index(i.e current element) will act as the right smaller(right boundary), and the next st.top() will act as the left boundary for the area
                 st.pop();

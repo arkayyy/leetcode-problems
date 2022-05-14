@@ -3,6 +3,7 @@ public:
     //INTUITION: It is logical to count the length beginning from the start of an white tile interval only. Because say the interval is (5,8) and the carpet length is 2. So if we start at 5 or 6 the effect would be same. 
     // and say (5,7) is white tiles and 8th is not, and again 9th is white. Now say the carpet length is 4. Now if we consider the carpet to cover 5,6,7,8 (3 white 1 gap) or 6,7,8,9 (3 white 1 gap). That's also same effect even with non-white gaps in the middle.
     
+    //ALGO: We consider every interval's staring pt as a starting point for putting the carpet and keep updating the number of white tiles covered as found
     int maximumWhiteTiles(vector<vector<int>>& tiles, int carpetLen) {
         sort(tiles.begin(),tiles.end());
         int ans = 0, whiteTilesCovered = 0, j = 0, prevRight = 0; //prevRight = previous carpet covering's rightmost index

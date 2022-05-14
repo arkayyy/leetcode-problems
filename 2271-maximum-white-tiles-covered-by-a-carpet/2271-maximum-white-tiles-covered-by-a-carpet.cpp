@@ -13,10 +13,10 @@ public:
             int right = left+carpetLen-1; //max index till which the carpet can cover if started from the current index (current index = starting point of current white tile interval)
             
             if(i>0) whiteTilesCovered -= (min(prevRight, tiles[i-1][1])-tiles[i-1][0]+1); //removing the previosly considered carpet covering
-            if (j > 0 && tiles[j-1][1] > prevRight) whiteTilesCovered += (min(right, tiles[j-1][1]) - prevRight); //adding current carpet covering
+            if (j > 0 && tiles[j-1][1] > prevRight) whiteTilesCovered += (min(right, tiles[j-1][1]) - prevRight); //adding current carpet covering (appearing before currently considered interval only)
             while (j < tiles.size() && tiles[j][0] <= right) 
             {
-                whiteTilesCovered += (min(right, tiles[j][1]) - tiles[j][0] + 1); //adding carpet covering for the current interval
+                whiteTilesCovered += (min(right, tiles[j][1]) - tiles[j][0] + 1); //adding carpet covering for the currently considered interval
                 ++j;
             }
             

@@ -11,7 +11,7 @@ public:
         vector<vector<bool>> visited(n, vector<bool> (m,false));
         int ans = 1;
         queue<vector<int>> q;
-        q.push({0,0,1});
+        q.push({0,0,1}); //we store the length of the current path in queue too as the third parameter of vector. First two are coordinates
         while(!q.empty())
         {
             int x = q.front()[0], y = q.front()[1];

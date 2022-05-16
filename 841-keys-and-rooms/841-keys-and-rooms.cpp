@@ -1,5 +1,8 @@
 class Solution {
 public:
+    //INTUITION: Try to visit all rooms and check at last if any room is unvisited, means key is not found anywhere!
+    
+    //ALGO: Simple BFS
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
         vector<bool> keyFound(rooms.size(),false);
         

@@ -38,7 +38,7 @@ public:
         int countProvinces()
         {
             unordered_set<int> s(parent.begin(),parent.end());
-            return s.size();
+            return s.size() - 1;
         }
     };
     
@@ -55,6 +55,6 @@ public:
         for(int i = 1; i<=n; i++)
             d.findParent(i);
         
-        return d.countProvinces()-1;
+        return d.countProvinces();
     }
 };

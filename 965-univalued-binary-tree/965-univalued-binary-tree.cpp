@@ -13,10 +13,20 @@ class Solution {
 public:
     bool isUnivalTree(TreeNode* root) {
         if(!root) true;
-        bool left = true, right = true;
-        if(root->left) {if(root->val!=root->left->val) return false;   else left = isUnivalTree(root->left);}
-        if(root->right) {if(root->val!=root->right->val) return false;   else right = isUnivalTree(root->right);}
+//         bool left = true, right = true;
+//         if(root->left) {if(root->val!=root->left->val) return false;   else left = isUnivalTree(root->left);}
+//         if(root->right) {if(root->val!=root->right->val) return false;   else right = isUnivalTree(root->right);}
         
-        return left&&right;
+//         return left&&right;
+        
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty())
+        {
+            TreeNode* t = q.front(); q.pop();
+            if(t->left) {if(t->val!=t->left->val) return false; q.push(t->left);}
+            if(t->right) {if(t->val!=t->right->val) return false; q.push(t->right);}
+        }
+        return true;
     }
 };

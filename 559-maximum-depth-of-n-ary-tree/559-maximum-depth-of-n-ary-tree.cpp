@@ -23,13 +23,13 @@ public:
     int maxDepth(Node* root) {
         if(!root) return 0;
         queue<pair<Node*,int>> q;
-        q.push({root,1});
+        q.push({root,1 });
         int ans = 1;
         while(!q.empty())
         {
             Node* t = q.front().first; int level = q.front().second; q.pop();
-            for(auto c: t->children)
-                {ans = max(ans,level+1); q.push({c,level+1});}
+            for(auto &c: t->children)
+               { ans = max(ans, level+1); q.push({c,level+1});}
         }
         return ans;
     }

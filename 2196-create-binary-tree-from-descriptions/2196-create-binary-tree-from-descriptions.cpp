@@ -12,8 +12,9 @@
 class Solution {
 public:
     TreeNode* createBinaryTree(vector<vector<int>>& descriptions) {
-        unordered_map<int,int> isRoot;//we will take convention: 2 for parent, 1 for child. Any child child can't be a root.
-        unordered_map<int,TreeNode*> mp;
+        unordered_map<int,int> isRoot;//we will take convention => 2: for potential candidate for root node, 1: for any child node. 
+        //LOGIC: Any child node can't be the root node ever.
+        unordered_map<int,TreeNode*> mp; //storing pointers created for every node
         for(auto d: descriptions)
         {
             if(mp.find(d[0])==mp.end()) {mp[d[0]] = new TreeNode(d[0]);}
@@ -25,7 +26,7 @@ public:
             if(!d[2])
                 mp[d[0]]->right = mp[d[1]];
                
-            if(isRoot.find(d[0])==isRoot.end()) isRoot[d[0]] = 2; //marked as parent only if previously never marked as child
+            if(isRoot.find(d[0])==isRoot.end()) isRoot[d[0]] = 2; //marked as potential candidate for root node only if previously never marked as child
             isRoot[d[1]] = 1; //marked as child
         }
                

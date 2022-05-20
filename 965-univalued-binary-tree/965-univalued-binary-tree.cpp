@@ -13,12 +13,14 @@ class Solution {
 public:
     bool isUnivalTree(TreeNode* root) {
         if(!root) true;
+        //DFS:-
 //         bool left = true, right = true;
 //         if(root->left) {if(root->val!=root->left->val) return false;   else left = isUnivalTree(root->left);}
 //         if(root->right) {if(root->val!=root->right->val) return false;   else right = isUnivalTree(root->right);}
         
 //         return left&&right;
         
+        //BFS:-
         queue<TreeNode*> q;
         q.push(root);
         while(!q.empty())

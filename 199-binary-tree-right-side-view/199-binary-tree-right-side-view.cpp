@@ -16,7 +16,7 @@ public:
         //IDEA for DFS: the right boundary would consist of the rightmost node and their right child of every level. Except when the right child is NULL, we go to left child, and again try to extract the rightmost nodes at every level below that.
         if(!root) return;  
         
-        if(ans.size()<=level) ans.emplace_back(root->val);
+        if(ans.size()==level) ans.emplace_back(root->val);
         
         //if(!root->left && !root->right) {ans.emplace_back(root->val); return;}
         dfs(root->right, level+1, ans);

@@ -15,22 +15,40 @@ public:
     }
     int coinChange(vector<int>& coins, int amount) {
         sort(coins.begin(), coins.end()); //sorting for greedily choosing least no. of coins first
-        vector<vector<int>> dp(coins.size()+1,vector<int>(amount+1,INT_MAX-1));
+        //vector<vector<int>> dp(coins.size()+1,vector<int>(amount+1));
         // int ans = util(amount, coins.size()-1, coins, dp);
         // return ans==INT_MAX-1?-1:ans;
         
         
         //APPROACH 2: DP Tabulation TC:O(n*amount) SC:O(n*amount) no aux space
-        for(int j = 0; j<=amount; j++) dp[0][j] = INT_MAX-1;
-        for(int i = 0; i<=coins.size(); ++i) dp[i][0] = 0;
+//         for(int j = 0; j<=amount; j++) dp[0][j] = INT_MAX-1;
+//         for(int i = 0; i<=coins.size(); ++i) dp[i][0] = 0;
         
+//         for(int i = 1; i<=coins.size(); ++i)
+//             for(int j = 1; j<=amount; ++j)
+//             {   
+//                 dp[i][j] = dp[i-1][j];
+//                 if(coins[i-1]<=j )
+//                     dp[i][j] = min({dp[i][j], 1+dp[i][j-coins[i-1]]});
+//             }
+//         return dp[coins.size()][amount]==INT_MAX-1?-1:dp[coins.size()][amount];
+        
+        
+        //Space optimised DP Tabulation:-
+        vector<vector<int>> dp(2, vector<int>(amount+1));
+        for(int j = 0; j<=amount; ++j) dp[0][j] = INT_MAX-1;
+        dp[0][0] = 0;
         for(int i = 1; i<=coins.size(); ++i)
+        {
+            dp[1][0] = 0;
             for(int j = 1; j<=amount; ++j)
-            {   
-                dp[i][j] = dp[i-1][j];
-                if(coins[i-1]<=j )
-                    dp[i][j] = min({dp[i][j], 1+dp[i][j-coins[i-1]]});
+            {
+                dp[1][j] = dp[0][j];
+                if(coins[i-1]<=j)
+                    dp[1][j] = min(dp[1][j], 1+dp[1][j-coins[i-1]]);
             }
-        return dp[coins.size()][amount]==INT_MAX-1?-1:dp[coins.size()][amount];
+            dp[0] = dp[1];
+        }
+        return dp[1][amount]==INT_MAX-1?-1:dp[1][amount];
     }
 };

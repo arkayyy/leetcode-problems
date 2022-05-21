@@ -18,11 +18,11 @@ public:
         return res;
     }
     bool divisorGame(int n) {
-        //========================APPROACH 1: Recursion + Memoization DP TC:O(N) SC:O(N)========================================//
+        //========================APPROACH 1: Recursion + Memoization DP TC:O(N^2) SC:O(N) extra aux space========================================//
         vector<int> dp(n+1, 0);
         // return util(n,dp);
         
-        //========================APPROACH 2: Tabulation DP TC:O(N) SC:O(N)===========================================//
+        //========================APPROACH 2: Tabulation DP TC:O(N^2) SC:O(N)===========================================//
         dp[0] = 0;
         dp[1] = 0;
         for(int i = 2; i<=n; ++i)

@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //DETAILED NOTES: https://drive.google.com/file/d/1lFgBayD-kcbFU8RXw1ZI9s1wBDHvbkvv/view?usp=sharing
+    
     //INTUITION: For any hegight in the array, the max area that can it can cause will be between its right smaller height and left smaller height...THINK!
     int largestRectangleArea(vector<int>& heights) {
         //A less optimal solution will be if we create two different arrays leftSmaller (where we store left smaller boundary for every index) and rightSmaller (where we store right smaller boundary for evry index)
@@ -24,7 +26,6 @@ public:
             }
             st.push(i);
         }
-        
         return maxArea;
     }
 };

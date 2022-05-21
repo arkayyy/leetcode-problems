@@ -23,12 +23,15 @@ public:
         // return util(n,dp);
         
         //========================APPROACH 2: Tabulation DP TC:O(N^2) SC:O(N)===========================================//
-        dp[0] = 0;
-        dp[1] = 0;
-        for(int i = 2; i<=n; ++i)
-            for(int j = 1; j<=i/2; ++j)
-                if(i%j==0)
-                    dp[i] = dp[i] || !dp[i-j];
-        return dp[n];
+//         dp[0] = 0;
+//         dp[1] = 0;
+//         for(int i = 2; i<=n; ++i)
+//             for(int j = 1; j<=i/2; ++j)
+//                 if(i%j==0)
+//                     dp[i] = dp[i] || !dp[i-j];
+//         return dp[n];
+        
+        //=======================APPROACH 3: Mathematics TC:O(1) SC:O(1) ===============================//
+        return n%2==0;
     }
 };

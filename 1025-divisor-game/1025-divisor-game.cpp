@@ -32,6 +32,9 @@ public:
 //         return dp[n];
         
         //=======================APPROACH 3: Mathematics TC:O(1) SC:O(1) ===============================//
-        return n%2==0;
+        return n%2==0; //because if n is even, we can make it 1 in the last by forcefully converting the no. ;eft at Bob's number to be odd
+        //Now since odd number can only have odd factors. SO whatever factor we select will be odd.
+        //(odd - odd) = even no. SO alice will be getting an even number for his chance no matter what, and he repeatedly keeps
+        //converting that even number to odd. So that at last bob is left with 1. (SO HE LOSES!) 
     }
 };

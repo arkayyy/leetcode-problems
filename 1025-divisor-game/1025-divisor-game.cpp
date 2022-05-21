@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //Function for Recursion + Memoization :-
     bool util(int n, vector<int>& dp)
     {
         if(dp[n]!=-1) return dp[n]==1;
@@ -17,7 +18,17 @@ public:
         return res;
     }
     bool divisorGame(int n) {
-        vector<int> dp(n+1, -1);
-        return util(n,dp);
+        //========================APPROACH 1: Recursion + Memoization DP TC:O(N) SC:O(N)========================================//
+        vector<int> dp(n+1, 0);
+        // return util(n,dp);
+        
+        //========================APPROACH 2: Tabulation DP TC:O(N) SC:O(N)===========================================//
+        dp[0] = 0;
+        dp[1] = 0;
+        for(int i = 2; i<=n; ++i)
+            for(int j = 1; j<=i/2; ++j)
+                if(i%j==0)
+                    dp[i] = dp[i] || !dp[i-j];
+        return dp[n];
     }
 };

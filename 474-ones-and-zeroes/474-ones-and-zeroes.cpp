@@ -13,6 +13,7 @@ public:
     }
     int findMaxForm(vector<string>& strs, int m, int n) {
         
+        //================================APPROACH 1: Recursion + Memoization TC:O(N^3) SC:O(N^3) ================================//
         // memset(dp,-1,sizeof(dp));
         vector<int> ones(strs.size()), zeros(strs.size());
         for(int i = 0; i<strs.size(); ++i)
@@ -24,7 +25,7 @@ public:
         // return util(strs.size()-1, m, n, ones, zeros);
         
         
-        //Tabulation DP:-
+        //===============================APPROACH 2: Tabulation DP TC:O(N^3) SC:O(N^3) no recursion aux space======================//
         memset(dp,0,sizeof(dp)); //base case (just for visualising, actual variable names may be taken differently): 
         //whenever i==0 || m==0 || n==0 then dp[i][m][n] = 0. So by default setting all as 0.
         for(int i = 1; i<=strs.size(); ++i)

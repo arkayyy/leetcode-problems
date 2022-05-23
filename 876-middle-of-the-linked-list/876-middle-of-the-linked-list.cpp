@@ -10,6 +10,8 @@
  */
 class Solution {
 public:
+    //2-pointer technique: move one pointer at half the speed of other, so whenever the ahead pointer will reach the end of the LL, 
+    //the slower pointer will stay at the middle!
     ListNode* middleNode(ListNode* head) {
         ListNode* slo = head, *fast = head;
         while(fast && fast->next) slo = slo->next, fast = fast->next->next;

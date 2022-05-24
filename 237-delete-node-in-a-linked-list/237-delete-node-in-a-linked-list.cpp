@@ -8,7 +8,7 @@
  */
 class Solution {
 public:
-    //INTUITION: Copy the value of next node in the to-be-deleted, connect it to the next to next node, and at last delete the next node (stored).
+    //INTUITION: Copy the value of next node in the to-be-deleted, connect it to the next to next node, and then delete the next node (stored).
     void deleteNode(ListNode* node) {
         ListNode* t = node->next;
         node->val = node->next->val;

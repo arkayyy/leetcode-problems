@@ -7,8 +7,11 @@ public:
         
         for(int t = i; t<candidates.size();++t)
         {
+            //---only addition after Combination Sum I -----//
             if(t != i && candidates[t]==candidates[t-1])               //to avoid picking up the same combnation
                 continue;
+            //----------------------------------------------//
+            
             if(candidates[t]<=target)
             {
                 

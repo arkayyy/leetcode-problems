@@ -7,9 +7,9 @@ class Solution
 {
     public:
     bool static comparator(vector<int>& m1, vector<int>& m2) {
-         if (m1[1] < m2[1]) return true;
-         else if (m1[1] > m2[1]) return false;
-         else if (m1[2] < m2[2]) return true;
+         if (m1[1] < m2[1]) return true; //comparing based on end of both intervals first
+         else if (m1[1] > m2[1]) return false; 
+         else if (m1[2] < m2[2]) return true; //then comparing based on the index in the original intervals array
          return false;
       }
     //Function to find the maximum number of meetings that can

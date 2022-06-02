@@ -6,8 +6,7 @@ public:
         int ans = 0;
         for(auto m:mp) {
             if(m.second==1) return -1;
-            else if(m.second%3==0) ans += m.second/3;
-            else ans+=m.second/3 + 1;
+            ans+=m.second/3 + (m.second%3!=0 ? 1 : 0);
         }
         return ans;
     }

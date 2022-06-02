@@ -1,7 +1,7 @@
 class Solution {
 public:
     //INTUITION: To make the lexicographically smallest non-palindrome, we need to find the first character greater than 'a' from the left, and convert it to 'a'.
-    //So the palindrome is also broken and at the same time, the lexicographically smallest string is made, since the dependency/significance of the character on lexicographic order pf the string decreases from left to right
+    //So the palindrome is also broken and at the same time, the lexicographically smallest string is made, since the dependency/significance of the character on lexicographic order of the string decreases from left to right
     string breakPalindrome(string palindrome) {
     if(palindrome.size()==1) return "";
        int i;

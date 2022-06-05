@@ -7,6 +7,7 @@ public:
     }
     
     void push(int x) {
+        //the logic is that the newly added element should always reside at the front of the queue, so it can be popped first (like in a stack)
         q.push(x);
         int len = q.size()-1;
         for(int i = 0; i<len; i++)

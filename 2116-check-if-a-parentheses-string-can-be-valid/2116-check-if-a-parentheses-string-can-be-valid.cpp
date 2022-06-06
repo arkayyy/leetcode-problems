@@ -1,5 +1,9 @@
 class Solution {
 public:
+    //INTUTITION: We do 2 traversals in total:-
+    //(i) left to right: if the number of closed brackets exceed the opening brackets then the stars need to act as the leftover opening brackets needed
+    //(ii) right to left: if the number of opening brackets exceed the closing brackets then the stars need to act as the leftover closing brackets needed
+    //So in both traversals, at any time if the number of unpaired brakcets exceeds the numbmer of stars available to cover them up, we can't make the string valid in any way.
     bool canBeValid(string s, string locked) {
         if(s.size()%2==1) return false;
         

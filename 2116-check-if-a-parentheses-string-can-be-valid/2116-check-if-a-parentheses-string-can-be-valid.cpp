@@ -1,4 +1,5 @@
 class Solution {
+    //Similar question: https://leetcode.com/problems/valid-parenthesis-string/
 public:
     //INTUTITION: We do 2 traversals in total:-
     //(i) left to right: if the number of closed brackets exceed the opening brackets then the stars need to act as the leftover opening brackets needed

@@ -1,4 +1,9 @@
 class Solution {
+    //INTUITION: Simple DFS
+    
+    //ALGO: We keep a visited array and perform DFS from (0,0). For each kind of road we encounter, we see whether we can move up, down, left or right.
+    //Also, the connectivity of current road and the next grid cell road must match (that can be determined and set as per the diagrams given in the question).
+    //e.g.only streets 1,4 and 6 can accept coming leftwards from another cell to it.(since only 1,4 and 6 have an incoming road on the right)
 public:
     bool isValid(int x,int y,vector<vector<int> > &grid)
     {
@@ -24,8 +29,10 @@ public:
             down=right=1;
         else if(grid[x][y] == 5)
             up = left = 1;
-        else
+        else //if(grid[x][y]==6)
             right=up=1;
+        
+        //Now moving in each direction by DFS (if the move is valid)
         if(up) //if we can move up
         {
             int xx=x-1,yy=y;
@@ -53,7 +60,7 @@ public:
     }
     bool hasValidPath(vector<vector<int>>& grid) {
         int n = grid.size();
-        if(!n)
+        if(!n) //no roads, so already reached end
             return 1;
         int m = grid[0].size();
         vector <vector<bool> > visited(n,vector<bool>(m,0));

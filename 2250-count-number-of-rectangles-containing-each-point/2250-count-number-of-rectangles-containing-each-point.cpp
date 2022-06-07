@@ -38,7 +38,7 @@ public:
             int x = p[0], y = p[1];
             int sum = 0;
             for(int i = y; i<=100; i++)
-                sum+= mp[i].size() - binsearch(mp[i],x); //lower bound will give the position of the rectangle upper point's x coordinate that is just more than (or not less than) the given value of x (in point)
+                sum+= mp[i].size() - binsearch(mp[i],x); //binary search will give the position of the rectangle upper point's x coordinate that is just more than or equal to (i.e. not less than) the given value of x (in point)
             //This will ensure that all such rectangles are counted whose upper corner's x coordinate is more than this given point's x coordinate...
             //...because only those rectangles can contain this point!
             ans.push_back(sum);

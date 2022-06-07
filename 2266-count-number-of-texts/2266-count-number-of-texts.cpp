@@ -1,4 +1,6 @@
 class Solution {
+    //INTUTION: The different combinations of the same number button would be caused by various no. of repititions of itself being considered.
+    //So whenever we find any repititions of the same number, we assess the different possibilities of the character being added.
 public:
     int MOD = 1e9 + 7;
     int util(int i, string s, int n, vector<int>&dp)

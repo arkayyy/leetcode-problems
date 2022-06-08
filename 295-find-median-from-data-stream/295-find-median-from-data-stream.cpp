@@ -1,3 +1,4 @@
+
 class MedianFinder {
 public:
     //INTUITION: We take two opposite fashion priority queues, one in ascending and one in descending. And we will push elements in queue based on their range of elements inside. 
@@ -11,7 +12,8 @@ public:
     //top->[3,2,1] for pq1 (maxheap)     AND        top->[4,5,6] for pq2(minheap). So the top of both pq's give us the central elements.
 
     //e.g. [1,2,3,4,5] is divided into:
-    //top->[3,2,1] for pq1 (maxheap)     AND     top->[4,5] for pq2(minheap)
+    //top->[3,2,1] for pq1 (maxheap)     AND     top->[4,5] for pq2(minheap). Here the top of bigger pq will give us the central element.
+	
     priority_queue<int, vector<int>, greater<int>> pq2;
     priority_queue<int> pq1;
     MedianFinder() {
@@ -25,6 +27,7 @@ public:
         //the rule is that any priority queue having more than 1 elements more than the other priority queue,
         //we will transfer the extra element to the other priority queue 
         //as we will only transfer the topmost element of each pq, so for max heap it'll be the max element shifted, and for min head min. element shifted
+		//So, the two ranges will always stay adjacent to each other and never get disrupted.
 
         if(pq1.size()> pq2.size()+1) 
         {pq2.push(pq1.top()); pq1.pop();}
@@ -37,11 +40,3 @@ public:
         else return pq1.size()>pq2.size()?pq1.top():pq2.top();
     }
 };
-
-
-/**
- * Your MedianFinder object will be instantiated and called as such:
- * MedianFinder* obj = new MedianFinder();
- * obj->addNum(num);
- * double param_2 = obj->findMedian();
- */

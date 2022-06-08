@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //INTUITION: Only if the given string is palindrome, we can remove the whole string at once to make it empty.
+    //Otherwise, we can remove all a's in one go, and all b's in second move. DONE in 2 steps.
     bool isPalin(string& s)
     {
         int i = 0, j = s.size()-1;
@@ -9,25 +11,6 @@ public:
         return true;
     }
     int removePalindromeSub(string s) {
-        // int i = 0, j=0;
-        // int ans = 0;
-        // while(i<s.size())
-        // {
-        //     char c = s[i];
-        //     j = s.size()-1;
-        //     while(j>=i)
-        //     {
-        //         if(s[i]==s[j])
-        //         {
-        //             string t = s.substr(i,j-i+1);
-        //             if(isPalin(t)) {cout<<"between "<<i<<" and "<<j<<endl;++ans; i = j; break;}
-        //         }
-        //         --j;
-        //     }
-        //     ++i;
-        // }
-        // return ans;
-        
         return 2-isPalin(s);
     }
 };

@@ -5,7 +5,7 @@ public:
         for(auto& ch: text)
         {
             if(ch==pattern[1])//NOTE: ch==pattern[1] has to be checked bfore ch==pattern[0], for the edge case where pattern[0]==pattern[1].
-                //So that we don't miss out on counting all the patterns.
+                //So that we don't add extra count of patterns.
             { 
                 ans+=c1; //because this pattern[1] can form pattern with all the previous pattern[0] encountered in the string
                 ++c2; //counting pattern[1]

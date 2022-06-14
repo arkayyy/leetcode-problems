@@ -1,6 +1,6 @@
 class Solution {
 public:
-    //dp[i][j] indicates -> min. total ascii value of deletion required upto i index of s1 and j index of s2
+    //dp[i][j] indicates -> min. total ascii value of deletion required upto i characters of s1 and j characters of s2 (starting from left)
     int minimumDeleteSum(string s1, string s2) {
         int m = s1.size(), n = s2.size();
         vector<vector<int>> dp(m+1, vector<int>(n+1, 0));
@@ -13,9 +13,9 @@ public:
         for (int i = 1; i <= m; i++)
             for (int j = 1; j <= n; j++)
                 if (s1[i-1] == s2[j-1])
-                    dp[i][j] = dp[i-1][j-1];
+                    dp[i][j] = dp[i-1][j-1]; // no deletion required since characters in both strings are same
                 else 
-                    dp[i][j] = min(dp[i-1][j]+s1[i-1], dp[i][j-1]+s2[j-1]);
+                    dp[i][j] = min(dp[i-1][j]+s1[i-1], dp[i][j-1]+s2[j-1]); //deleting one character either from s1 or s2, and taking min. total ascii obtained
                 
         return dp[m][n];
     }

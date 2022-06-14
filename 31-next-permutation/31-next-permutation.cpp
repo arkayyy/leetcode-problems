@@ -2,7 +2,6 @@ class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
         int marker = INT_MAX;
-        
         //finding the last increasing pair in the array , e.g. in 1,2,6,5,3 ... 2,6 is the last increasing pair, so keeping marker at 6
         //or if we see alternatively we are finding the first decreasing pair from the backwards of the array.
         //this means starting from the marker position all elements to right of it are in descending order.

@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //dp[i][j] indicates -> min. total ascii value of deletion required upto i index of s1 and j index of s2
     int minimumDeleteSum(string s1, string s2) {
         int m = s1.size(), n = s2.size();
         vector<vector<int>> dp(m+1, vector<int>(n+1, 0));

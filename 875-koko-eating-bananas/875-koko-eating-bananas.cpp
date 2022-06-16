@@ -12,6 +12,6 @@ public:
             if(res>h) lo = mid+1;
             else {ans = mid; hi = mid-1;}
         }
-        return lo;
+        return ans;
     }
 };

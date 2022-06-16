@@ -32,7 +32,7 @@ public:
         return false;
     }
     
-    bool isCyclic(int v, unordered_map<int,vector<int>>&adj, vector<int>&visited, int n, stack<int>&st)
+    bool isCyclic(int v, unordered_map<int,vector<int>>&adj, vector<int>&visited, int n, vector<int>&ans)
 	{
 	    if(visited[v]==1) return true;
 	    
@@ -40,10 +40,10 @@ public:
 	    {
 	        visited[v] = 1;
 	        for(auto a: adj[v])
-	            if(isCyclic(a,adj,visited,n,st)) 
+	            if(isCyclic(a,adj,visited,n,ans)) 
 	            return true;
 	    }
-	    if(visited[v]!=2)st.push(v);
+	    if(visited[v]!=2)ans.push_back(v);
 	    visited[v] = 2;
 	    return false;
 	}
@@ -92,7 +92,7 @@ public:
 //         unordered_map<int, int> pos;
         
 //         vector<bool> visited(numCourses,false);
-        stack<int> st;
+        //stack<int> st;
 //         for(int i = 0; i<numCourses; i++)
 //             if(!visited[i])
 //                 dfs(i,adj,visited,st);
@@ -113,10 +113,9 @@ public:
         //DFS Approach 2 - Cycle Detection and Visited array method:-
        vector<int> visited(numCourses,0);
 	   for(int i = 0; i<numCourses; ++i)
-	    if(!visited[i] && isCyclic(i,adj,visited,numCourses,st))
+	    if(!visited[i] && isCyclic(i,adj,visited,numCourses,ans))
 	        return {};
-    while(!st.empty()) {ans.push_back(st.top());st.pop();}
+       reverse(ans.begin(),ans.end());
 	   return ans;
-
     }
 };

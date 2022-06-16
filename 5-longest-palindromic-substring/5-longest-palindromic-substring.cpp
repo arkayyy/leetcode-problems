@@ -4,7 +4,7 @@ public:
         vector<vector<int>> dp(s.size(),vector<int>(s.size(),0));
         for(int i = 0; i<s.size(); ++i) dp[i][i] = 1;
         int maxLen = 1; string ans = s.substr(0,1);
-        for(int i = s.size()-1; i>=0; --i)
+        for(int i = s.size()-1; i>=0; --i) //since at every step, we are using the next row of dp matrix, so we have to move from n-1 to 0 in this loop
             for(int j = i+1; j<s.size(); ++j)
                 if(s[i]==s[j] && (j-i==1 || dp[i+1][j-1]))
                 {

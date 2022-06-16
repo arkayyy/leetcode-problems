@@ -7,24 +7,46 @@ class Solution
 {
 	public:
 	//Function to return list containing vertices in Topological order. 
+	vector<int> ans;
+	bool isCyclic(int v, vector<int> adj[], vector<int>&visited, int n)
+	{
+	    if(visited[v]==1) return true;
+	    
+	    if(visited[v]==0)
+	    {
+	        visited[v] = 1;
+	        for(auto a: adj[v])
+	            if(isCyclic(a,adj,visited,n)) 
+	            return true;
+	    }
+	    if(visited[v]!=2) ans.push_back(v);
+	    visited[v] = 2;
+	    return false;
+	}
 	vector<int> topoSort(int V, vector<int> adj[]) 
 	{
-	    queue<int> q;
-	    vector<int> indegree(V,0);
-	    for(int i = 0; i<V; ++i)
-	        for(auto a:adj[i])
-	            ++indegree[a];
-	    for(int i = 0; i<V; ++i) if(indegree[i]==0) q.push(i);
+	   // queue<int> q;
+	   // vector<int> indegree(V,0);
+	   // for(int i = 0; i<V; ++i)
+	   //     for(auto a:adj[i])
+	   //         ++indegree[a];
+	   // for(int i = 0; i<V; ++i) if(indegree[i]==0) q.push(i);
 	    
-	    vector<int> ans; ans.reserve(V);
-	    while(!q.empty())
-	    {
-	        int t = q.front(); q.pop(); ans.emplace_back(t);
-	        for(auto a: adj[t])
-	            if(--indegree[a] == 0)
-	                q.push(a);
-	    }
-	    return ans;
+	   // vector<int> ans; ans.reserve(V);
+	   // while(!q.empty())
+	   // {
+	   //     int t = q.front(); q.pop(); ans.emplace_back(t);
+	   //     for(auto a: adj[t])
+	   //         if(--indegree[a] == 0)
+	   //             q.push(a);
+	   // }
+	   // return ans;
+	   vector<int> visited(V,0);
+	   for(int i = 0; i<V; ++i)
+	    if(!visited[i] && isCyclic(i,adj,visited,V))
+	        return {};
+	   reverse(ans.begin(),ans.end());
+	   return ans;
 	}
 };
 

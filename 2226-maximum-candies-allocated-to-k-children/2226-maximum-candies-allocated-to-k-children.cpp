@@ -10,8 +10,8 @@ public:
                 res += c / mid;
             }
             if (k > res)
-                hi = mid - 1;
-            else
+                { hi = mid - 1; }
+            else //if(res>=k) because we need to allocate candies to atleast those k children            
                {ans = mid; lo = mid + 1;}
         }
         return ans;

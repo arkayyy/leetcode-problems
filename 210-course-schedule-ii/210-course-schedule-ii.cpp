@@ -109,6 +109,8 @@ public:
 //         if(hasCycle(numCourses,pos,adj))
 //             return {};
         
+        
+        //DFS Approach 2 - Cycle Detection and Visited array method:-
        vector<int> visited(numCourses,0);
 	   for(int i = 0; i<numCourses; ++i)
 	    if(!visited[i] && isCyclic(i,adj,visited,numCourses,st))

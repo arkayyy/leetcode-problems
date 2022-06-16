@@ -5,7 +5,7 @@ public:
         while(lo<=hi)
         {
             int mid = (lo+hi)/2;
-            int noOfMissing = arr[mid] - (mid+1); //to the left
+            int noOfMissing = arr[mid] - (mid+1); //no of missing numbers to the left
             if(noOfMissing<k) lo = mid+1;
             else
                 hi = mid  - 1;

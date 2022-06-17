@@ -18,7 +18,29 @@ public:
         return util(root1->left,root2->right)&&util(root1->right,root2->left);
     }
     bool isSymmetric(TreeNode* root) {
-        if(root==NULL) return true;
-        return util(root->left,root->right);
+         if(root==NULL) return true;
+        // return util(root->left,root->right);
+        
+        deque<TreeNode*> dq;
+        dq.push_front(root->left);
+        dq.push_back(root->right);
+        
+        while(!dq.empty())
+        {
+            TreeNode* left = dq.front();
+            TreeNode* right = dq.back();
+            dq.pop_front();
+            dq.pop_back();
+            if(!left && !right) continue;
+            if(!left ||!right) return false;
+            if(left->val!=right->val) return false;
+            
+            dq.push_front(left->right);
+            dq.push_front(left->left);
+            dq.push_back(right->left);
+            dq.push_back(right->right);
+        }
+        
+        return true;
     }
 };

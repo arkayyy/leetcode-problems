@@ -21,6 +21,7 @@ public:
          if(root==NULL) return true;
         // return util(root->left,root->right);
         
+        //Deuqe Iterative Approach:-
         deque<TreeNode*> dq;
         dq.push_front(root->left);
         dq.push_back(root->right);
@@ -40,6 +41,8 @@ public:
             dq.push_back(right->left);
             dq.push_back(right->right);
         }
+        
+        //Can also be done using 2 queues..the idea is that everytime we have to check the symmetrically opposite node for equality
         
         return true;
     }

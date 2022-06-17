@@ -20,7 +20,19 @@ public:
     }
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> ans;
-        inorder(ans,root);
+        // inorder(ans,root);
+        // return ans;
+        
+        stack<TreeNode*> st;
+        TreeNode* curr = root;
+        while(!st.empty() || curr)
+        {
+            while(curr)
+                {st.push(curr); curr = curr->left;}
+            curr = st.top(); st.pop();
+            ans.emplace_back(curr->val);
+            curr = curr->right;
+        }
         return ans;
     }
 };

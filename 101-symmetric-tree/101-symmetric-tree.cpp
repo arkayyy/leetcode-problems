@@ -10,7 +10,9 @@
  * };
  */
 class Solution {
+    //INTUITION: The symmetric BT means left half of BT is mirror image of the right half.
 public:
+    //Iterative approach:-
     bool util(TreeNode* root1, TreeNode* root2)
     {
         if(!root1 || !root2) return root1==root2;

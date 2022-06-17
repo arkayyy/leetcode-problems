@@ -1,15 +1,20 @@
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-        int maxi = nums[0], mini = nums[0];
+        int mini = nums[0], maxi = nums[0];
         int ans = maxi;
-        for(int i = 1; i<nums.size(); ++i)
+        
+        for(auto i=1;i<nums.size();i++)
         {
-            int t = maxi;
-            maxi = max({nums[i],mini*nums[i],maxi*nums[i]});
-            mini = min({nums[i],mini*nums[i],t*nums[i]});
+            //there can be only 3 conditions, if nums[i] = 0, negative, or positive. If nums[i] = -ve, our aim will be to set maxi as mini*nums[i], because -ve and -ve product might bring the biggest number. mini should be set to nums[i]*maxi, since negative*positive will bring the least number
+            //next if nums[i] = +ve, our aim to store maxi as maxi*nums[i], and mini as mini*nums[i].
+            //if nums[i] = 0, our aim is to reset both mini and maxi to 0;
+            int currMax = max({nums[i], mini*nums[i], maxi*nums[i]});
+            mini = min({nums[i],nums[i]*mini, nums[i]*maxi});
+            maxi = currMax;
             ans = max(ans,maxi);
         }
+        
         return ans;
     }
 };

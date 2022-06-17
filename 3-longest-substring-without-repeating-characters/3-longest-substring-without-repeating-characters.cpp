@@ -27,5 +27,8 @@ public:
         }
         
         return maxLen;
+        
+
+        //CAN also be done using binary search. We will try to find the max window size having all non repeating characters in the string.
     }
 };

@@ -15,7 +15,7 @@ public:
     {
         if(!root) return 0;
         int left = depth(root->left,ans), right = depth(root->right,ans);
-        ans = max(ans,left+right);
+        ans = max(ans,left+right);//diameter of the tree woule be the max sum of left and right subtree height at any node
         return 1+max(left,right);
     }
     int diameterOfBinaryTree(TreeNode* root) {

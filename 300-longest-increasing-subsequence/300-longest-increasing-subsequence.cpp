@@ -18,7 +18,7 @@ public:
         // return util(0,-1,nums,dp);
         
         
-        //TABULATION:-
+//         //TABULATION:-
         
 //         vector<vector<int>> dp(nums.size()+1, vector<int>(nums.size()+1));
 //         for(int prevIdx = 0; prevIdx<=nums.size();++prevIdx) dp[nums.size()][prevIdx] = 0;  //equivalent to base case of recursion
@@ -35,19 +35,28 @@ public:
 //         return dp[0][0];
         
         
+        vector<int> dp(nums.size(),1);
+        for(int i = 0; i<nums.size(); ++i)
+            for(int j = 0; j<i; ++j)
+                if(nums[j]<nums[i] && dp[j]>=dp[i])
+                    dp[i] = 1+dp[j];
+        return *max_element(dp.begin(),dp.end());
+        
+        
         //BINARY SEARCH:-
         
-        vector<int> curr;
-        for(int i = 0; i<nums.size(); ++i)
-        {
-            if(curr.size()==0 || nums[i]>curr.back()) curr.push_back(nums[i]);
-            else
-            {
-                auto it = lower_bound(curr.begin(),curr.end(),nums[i]);
-                *it = nums[i];
-            }
-        }
-        return curr.size();
+//         vector<int> curr;
+//         for(int i = 0; i<nums.size(); ++i)
+//         {
+//             if(curr.size()==0 || nums[i]>curr.back()) curr.push_back(nums[i]);
+//             else
+//             {
+//                 auto it = lower_bound(curr.begin(),curr.end(),nums[i]);//we are substitutig the number in the array that is not less than(i.e. greater than or equal to) nums[i].
+//                 //we are doing it to maximize the length of LIS in the future.
+//                 *it = nums[i];
+//             }
+//         }
+//         return curr.size();
         
     }
 };

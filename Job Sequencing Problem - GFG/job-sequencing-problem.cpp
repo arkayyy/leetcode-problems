@@ -32,18 +32,18 @@ class Solution
     { 
         sort(arr,arr+n,[&](auto&a,auto&b){ return a.profit>b.profit; });
         int slots[n], result[n];
+        int cnt = 0, profit =0;
         memset(slots,0,sizeof(slots));
         for(int i = 0; i<n; ++i)
             for(int j = min(n,arr[i].dead)-1; j>=0; --j)
                 if(!slots[j])
                 {
-                    result[j] = i, slots[j] = 1;
+                    //result[j] = i, 
+                    slots[j] = 1;
+                    ++cnt,profit+= arr[i].profit;
                     break;
                 }
-        int cnt = 0, profit =0;
-        for(int i=0; i<n;++i)
-            if(slots[i])
-                ++cnt,profit+= arr[result[i]].profit;
+                
         return {cnt,profit};
     }   
 };

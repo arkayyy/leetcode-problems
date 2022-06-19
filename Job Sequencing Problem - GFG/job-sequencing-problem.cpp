@@ -27,25 +27,48 @@ class Solution
 {
     public:
     //Function to find the maximum profit and the number of jobs done.
+    struct profitSort{
+        bool operator()(auto&a,auto&b)
+        {
+            return a.profit<b.profit;
+        }
+    };
     
     vector<int> JobScheduling(Job arr[], int n) 
     { 
-        sort(arr,arr+n,[&](auto&a,auto&b){ return a.profit>b.profit; });
-        int slots[n], result[n];
-        int cnt = 0, profit =0;
-        memset(slots,0,sizeof(slots));
-        for(int i = 0; i<n; ++i)
-            for(int j = min(arr[i].dead,n)-1; j>=0; --j)
-                if(!slots[j])
-                {
-                    //result[j] = i, 
-                    slots[j] = 1;
-                    ++cnt,profit+= arr[i].profit;
-                    break;
-                }
+        // sort(arr,arr+n,[&](auto&a,auto&b){ return a.profit>b.profit; });
+        // int slots[n], result[n];
+        // int cnt = 0, profit =0;
+        // memset(slots,0,sizeof(slots));
+        // for(int i = 0; i<n; ++i)
+        //     for(int j = min(arr[i].dead,n)-1; j>=0; --j)
+        //         if(!slots[j])
+        //         {
+        //             //result[j] = i, 
+        //             slots[j] = 1;
+        //             ++cnt,profit+= arr[i].profit;
+        //             break;
+        //         }
                 
-        return {cnt,profit};
+        // return {cnt,profit};
         
+        sort(arr,arr+n,[&](auto&a, auto&b){return a.dead<b.dead;});
+        priority_queue<Job,vector<Job>,profitSort> pq;
+        int cnt = 0,profit = 0;
+        for(int i = n-1; i>=0; --i)
+        {
+            int freeSlots = 0;
+            freeSlots = i==0?arr[i].dead:arr[i].dead-arr[i-1].dead;
+            pq.push(arr[i]);
+            while(freeSlots && !pq.empty())
+            {
+                --freeSlots,++cnt;
+                profit+=pq.top().profit;
+                pq.pop();
+            }
+        }
+        
+        return {cnt,profit};
         
     }   
 };

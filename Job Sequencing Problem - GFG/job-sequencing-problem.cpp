@@ -35,7 +35,7 @@ class Solution
         int cnt = 0, profit =0;
         memset(slots,0,sizeof(slots));
         for(int i = 0; i<n; ++i)
-            for(int j = min(n,arr[i].dead)-1; j>=0; --j)
+            for(int j = min(arr[i].dead,n)-1; j>=0; --j)
                 if(!slots[j])
                 {
                     //result[j] = i, 
@@ -45,6 +45,8 @@ class Solution
                 }
                 
         return {cnt,profit};
+        
+        
     }   
 };
 

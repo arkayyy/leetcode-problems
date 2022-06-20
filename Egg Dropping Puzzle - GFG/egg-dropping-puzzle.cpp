@@ -16,7 +16,7 @@ class Solution
         int res = INT_MAX;
         for(int i = 1; i<=k;++i)
             res = min(res, 1+max(util(n-1,i-1,dp),util(n,k-i,dp)));
-        return dp[n][k] = res;
+        return dp[n][k] = res==INT_MAX?0:res;
     }
     int eggDrop(int n, int k) 
     {

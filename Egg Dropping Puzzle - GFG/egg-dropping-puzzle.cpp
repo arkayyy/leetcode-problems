@@ -8,22 +8,21 @@ class Solution
     public:
     //Function to find minimum number of attempts needed in 
     //order to find the critical floor.
-    int dp[201][201];
-    int util(int eggs, int floors)
+    int util(int n, int k,vector<vector<int>>& dp)
     {
-        if(floors==1 || floors == 0 || eggs == 1) return dp[eggs][floors] = floors;
-        
-        if(dp[eggs][floors]!=-1) return dp[eggs][floors];
+        if(k==1 || n==1 || k==0) dp[n][k] = k; 
+        if(dp[n][k]!=-1) return dp[n][k];
         
         int res = INT_MAX;
-        for(int i = 1; i<=floors; ++i)
-            res = min(1+max(util(eggs-1,i-1),util(eggs,floors-i)),res);
-        return dp[eggs][floors] = res;
+        for(int i = 1; i<=k;++i)
+            res = min(res, 1+max(util(n-1,i-1,dp),util(n,k-i,dp)));
+        return dp[n][k] = res;
     }
     int eggDrop(int n, int k) 
     {
-        memset(dp,-1,sizeof(dp));
-        return util(n,k);
+        // your code here
+        vector<vector<int>> dp(n+1, vector<int>(k+1,-1));
+        return util(n,k,dp);
     }
 };
 

@@ -8,20 +8,18 @@ class Solution
     public:
     //Function to find minimum number of attempts needed in 
     //order to find the critical floor.
-    int util(int n, int k,vector<vector<int>>& dp)
+    int util(int eggs, int floors, vector<vector<int>>& dp)
     {
-        if(k==1 || n==1 || k==0) dp[n][k] = k; 
-        if(dp[n][k]!=-1) return dp[n][k];
-        
-        int res = INT_MAX;
-        for(int i = 1; i<=k;++i)
-            res = min(res, 1+max(util(n-1,i-1,dp),util(n,k-i,dp)));
-        return dp[n][k] = res==INT_MAX?0:res;
+        if(floors == 0 || floors ==1 || eggs ==1) dp[eggs][floors] = floors;
+        if(dp[eggs][floors]!=INT_MAX) return dp[eggs][floors];
+        for(int i = 1; i<=floors; ++i)
+            dp[eggs][floors] = min(dp[eggs][floors], 1+max(util(eggs-1,i-1,dp),util(eggs,floors-i,dp)));
+        return dp[eggs][floors];
     }
     int eggDrop(int n, int k) 
     {
         // your code here
-        vector<vector<int>> dp(n+1, vector<int>(k+1,-1));
+        vector<vector<int>> dp(n+1,vector<int>(k+1,INT_MAX));
         return util(n,k,dp);
     }
 };

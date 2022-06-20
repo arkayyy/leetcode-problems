@@ -30,10 +30,12 @@ class Solution
     vector<int> JobScheduling(Job arr[], int n) 
     { 
         sort(arr,arr+n,[&](auto& a,auto& b){return a.profit>b.profit;});
-        vector<int> slots(n,0);
+        int maxdead = arr[0].dead;
+        for(int i = 1; i<n; ++i) maxdead = max(maxdead,arr[i].dead);
+        vector<int> slots(maxdead,0);
         int cnt = 0, profit = 0;
         for(int i = 0; i<n; ++i)
-            for(int j = min(arr[i].dead,n)-1; j>=0; --j)
+            for(int j = arr[i].dead-1; j>=0; --j)
                 if(!slots[j])
                     {++cnt, profit+=arr[i].profit, slots[j] = 1;
                     break;}

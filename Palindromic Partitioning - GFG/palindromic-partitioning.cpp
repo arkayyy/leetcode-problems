@@ -10,6 +10,7 @@ using namespace std;
 class Solution{
 public:
 vector<vector<int>> dp;
+//Partition DP
     bool isPalin(int i,int j, string&s)
     {
         while(i<j)

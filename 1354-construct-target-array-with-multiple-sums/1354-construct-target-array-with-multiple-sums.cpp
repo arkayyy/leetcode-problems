@@ -9,13 +9,12 @@ public:
             sum+=num;
         }
         while(pq.top() != 1){
-            sum -= pq.top();
-            if(sum == 0 || sum >= pq.top()) return false;
-            int old = pq.top()%sum;
-            if(sum != 1 && old == 0) return false;
-            pq.pop();
-            pq.push(old);
-            sum += (old);
+            int t= pq.top(); pq.pop();
+            sum-=t;
+            if(sum == 0 || sum >= t) return false;
+            t%=sum;
+            sum+=t;
+            pq.push(t?t:sum);
         }
         return true;
     }

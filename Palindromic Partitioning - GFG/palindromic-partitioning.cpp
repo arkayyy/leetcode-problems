@@ -18,20 +18,32 @@ vector<vector<int>> dp;
         return true;
     }
     
-    int util(int i,int j, string& s)
+    // int util(int i,int j, string& s)
+    // {
+    //     if(i>j) return 0;
+        
+    //     if(isPalin(i,j,s)) return 0;
+        
+    //     if(dp[i][j]!=-1) return dp[i][j];
+        
+    //     int res = INT_MAX;
+    //     for(int t = i; t<j;++t)
+    //         if(isPalin(i,t,s))
+    //             res = min(res, 1+util(t+1,j,s));
+                
+    //     return dp[i][j] = (res==INT_MAX?0:res);
+    // }
+    
+    int util(int i, int j,string&s)
     {
-        if(i>j) return 0;
-        
+        if(i==j) return 0;
         if(isPalin(i,j,s)) return 0;
-        
         if(dp[i][j]!=-1) return dp[i][j];
         
         int res = INT_MAX;
-        for(int t = i; t<j;++t)
-            if(isPalin(i,t,s))
-                res = min(res, 1+util(t+1,j,s));
-                
-        return dp[i][j] = (res==INT_MAX?0:res);
+        for(int t = i; t<j; ++t)
+            res = min(res, 1+util(i,t,s)+util(t+1,j,s));
+        return dp[i][j] = res;
     }
     int palindromicPartition(string str)
     {

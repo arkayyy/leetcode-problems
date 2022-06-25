@@ -41,8 +41,8 @@ vector<vector<int>> dp;
         if(dp[i][j]!=-1) return dp[i][j];
         
         int res = INT_MAX;
-        for(int t = i; t<j; ++t)
-            res = min(res, 1+util(i,t,s)+util(t+1,j,s));
+        for(int t = i+1; t<=j; ++t)
+            res = min(res, 1+util(i,t-1,s)+util(t,j,s));
         return dp[i][j] = res;
     }
     int palindromicPartition(string str)

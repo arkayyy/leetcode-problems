@@ -9,5 +9,7 @@ public:
         for(int i = 2; i<=n;++i)
             dp[i] = (dp[i-1]+dp[i-2])%mod;
         return ((long long)dp[n]*(long long)dp[n])%mod;
+        
+        //can be space optimised by just taking two previous values as variables
     }
 };

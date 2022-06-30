@@ -10,7 +10,6 @@
  */
 class Solution {
 public:
-    //INTUITION: Whichever node has smaller value, we put that first
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         ListNode* curr1 = list1, *curr2 = list2;
         ListNode* head3 = new ListNode(-1);

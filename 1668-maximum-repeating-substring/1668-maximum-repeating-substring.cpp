@@ -32,7 +32,7 @@ public:
             if(sequence[i]==word[j])
                 ++i,++j;
 
-            else //if(i<sequence.size() && sequence[i]!=word[j])
+            else if(i<sequence.size() && sequence[i]!=word[j])
             {
                 if(j!=0) j = lps[j-1];
                 else ++i;

@@ -9,7 +9,7 @@ public:
             ++step;
             for(int i = start; i<=end; ++i)
             {
-                if(i+nums[i]>=nums.size()) return step;
+                if(i+nums[i]>=nums.size()-1) return step;
                 maxend = max(maxend,i+nums[i]);
             }
             start = end+1;

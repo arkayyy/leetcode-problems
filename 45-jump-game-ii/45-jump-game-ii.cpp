@@ -10,13 +10,13 @@ public:
         int step = 0;
         while(end<nums.size()-1)
         {
-           // maxend = end+1; //
-            ++step;
+            ++step; 
             for(int i = start; i<=end; ++i)
             {
-                if(i+nums[i]>=nums.size()-1) return step;
-                maxend = max(maxend,i+nums[i]);
+                if(i+nums[i]>=nums.size()-1) return step; //can reach end
+                maxend = max(maxend,i+nums[i]); //storing max index we can jump to from current index
             }
+            //updating [start,end] range for our next check:-
             start = end+1;
             end = maxend;
         }

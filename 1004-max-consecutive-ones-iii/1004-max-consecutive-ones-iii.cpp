@@ -9,7 +9,8 @@ public:
             ++freq[nums[end]];
             int currSubstrLen = end-start+1;
             if(currSubstrLen - freq[1] > k) --freq[nums[start++]];
+            else ans = max(ans,currSubstrLen);
         }
-        return end-start;
+        return ans;
     }
 };

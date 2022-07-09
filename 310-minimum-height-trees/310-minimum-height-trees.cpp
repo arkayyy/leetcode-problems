@@ -1,6 +1,6 @@
 class Solution {
 public:
-    //INTUITION: The minimum height tree would be produced by BFS traversing from the leaf nodes inwards, until the indegree of all the nodes are extinguished.
+    //INTUITION: The minimum height tree would be produced by BFS traversing (one step at a time) from the leaf nodes inwards, until the indegree of all the nodes are extinguished.
     vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
         if(n==0) return {};
         if(n==1) return {0};

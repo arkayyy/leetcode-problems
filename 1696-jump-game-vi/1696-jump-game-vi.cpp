@@ -3,6 +3,10 @@ public:
     int maxResult(vector<int>& nums, int k) {
         long long curr = 0;
         deque<int> dq;//monotonic dequeue (will always have max element at front, just like a max heap)
+        
+        
+        //WE are doing tabulation here. Since we have to reach nums.size()-1 at last, so our base case is at that index. 
+        //That's why we start traversing from nums.size()-1
         for(int i = nums.size()-1; i>=0; --i)
         {
             curr = nums[i]+(dq.empty()?0:nums[dq.front()]); //maximum score/element containing index will be at the front of the deque 

@@ -21,18 +21,13 @@ public:
             sum+=start[i]=='R';
             rarr[i] = sum;
         }
-        int lc = 0, rc = 0;
+
         for(int i = 0; i<target.size(); ++i)
         {
             if(target[i]=='L')
-            {
-                if(!larr[i]) return false;
-            
-            }
+                {if(!larr[i]) return false;}
             else if(target[i]=='R')
-            {
-                if(!rarr[i]) return false;
-            }
+                {if(!rarr[i]) return false;}
         }
         
         return true;

@@ -1,33 +1,29 @@
 class Solution {
-    typedef pair<int, int> PII;
 public:
-    int countRestrictedPaths(int n, vector<vector<int>>& E) {
-        long mod = 1e9 + 7;
-        vector<vector<pair<long, int>>> G(n);
-        for (auto &e : E) {
-            int u = e[0] - 1, v = e[1] - 1, w = e[2];
-            G[u].emplace_back(v, w);
-            G[v].emplace_back(u, w);
-        }
-        priority_queue<PII, vector<PII>, greater<PII>> pq;
-        vector<long> dist(n, INT_MAX), cnt(n, 0);
-        dist[n - 1] = 0;
-        cnt[n - 1] = 1;
-        pq.emplace(0, n - 1);
-        while (pq.size()) {
-            auto [w, u] = pq.top();
-            pq.pop();
-            if (w > dist[u]) continue;
-            for (auto &[v, d] : G[u]) {
-                if (dist[v] > w + d) {
-                    dist[v] = w + d;
-                    pq.emplace(dist[v], v);
-                }
-                if (w > dist[v]) {
-                    cnt[u] = (cnt[u] + cnt[v]) % mod;
-                }
+    int MOD = 1e9+7;
+    int countRestrictedPaths(int n, vector<vector<int>>& edges) {
+        unordered_map<int,vector<vector<int>>> adj;
+        for(auto& e:edges)
+            adj[e[0]].push_back({e[1],e[2]}), adj[e[1]].push_back({e[0],e[2]});
+        
+        vector<int> dist(n+1,INT_MAX), cnt(n+1,0);
+        dist[n] = 0;
+        cnt[n] = 1;
+        priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+        pq.push({0,n});
+        while(!pq.empty())
+        {
+            int u = pq.top().second, d = pq.top().first; pq.pop();
+            if(dist[u]<d) continue;
+            for(auto& a: adj[u])
+            {
+                if(d+a[1] < dist[a[0]])
+                {dist[a[0]] = d+a[1]; pq.push({dist[a[0]],a[0]});}
+                if(d > dist[a[0]]) //if current path is longer(has more total weight) than the shortest path
+                    cnt[u] = (cnt[u]+cnt[a[0]])%MOD;
             }
         }
-        return cnt[0];
+        
+        return cnt[1];
     }
 };

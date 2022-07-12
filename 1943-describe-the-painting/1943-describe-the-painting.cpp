@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //Similar to meeting rooms!
     vector<vector<long long>> splitPainting(vector<vector<int>>& segments) {
         map<int,long long> mp;
         for(auto& s: segments)

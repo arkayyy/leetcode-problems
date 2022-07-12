@@ -5,7 +5,7 @@ public:
         for(auto& s: segments)
             mp[s[0]]+=s[2], mp[s[1]]-=s[2];
         
-        int prevEnd = 0;
+        int prevEnd = -1;
         vector<vector<long long>> ans;
         for(auto& m: mp)
         {

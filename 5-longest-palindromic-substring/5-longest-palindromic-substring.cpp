@@ -19,27 +19,37 @@ public:
     int util(int i, int j, string&s, vector<vector<int>>&dp)
     {
         if(i>=j) return 1;
-        if(dp[i][j]!=-1) return dp[i][j]; //termination
+        if(dp[i][j]!=-1) return dp[i][j];
         
         dp[i][j] = (s[i]==s[j])&&(util(i+1,j-1,s,dp));
-        util(i+1,j,s,dp);
-        util(i,j-1,s,dp);
+        // util(i+1,j,s,dp);
+        // util(i,j-1,s,dp);
         
         return dp[i][j];
     }
     
     string longestPalindrome(string s) {
         
-        //DP Memoization Approach O
+        //DP Memoization Approach O(N^3) Time: inside every rec call 2 more calls are being made. O(N^2) Space
         vector<vector<int>> dp(s.size(),vector<int>(s.size(),-1));
         int maxLen = 1; string ans = s.substr(0,1);
         util(0,s.size()-1,s,dp);
+        // for(int i = 0; i<s.size(); ++i)
+        //     for(int j = i+1; j<s.size(); ++j)
+        //         if(dp[i][j] && j-i+1>maxLen)
+        //         {
+        //             maxLen = j-i+1;
+        //             ans = s.substr(i,j-i+1);
+        //         }
         for(int i = 0; i<s.size(); ++i)
-            for(int j = i+1; j<s.size(); ++j)
-                if(dp[i][j] && j-i+1>maxLen)
+            for(int j = i; j<s.size(); ++j)
+                if(s[i]==s[j] && util(i+1,j-1,s,dp))
                 {
-                    maxLen = j-i+1;
-                    ans = s.substr(i,j-i+1);
+                    if(j-i+1>maxLen)
+                    {
+                        maxLen = j-i+1;
+                        ans = s.substr(i,j-i+1);
+                    }
                 }
         return ans;
         

@@ -33,14 +33,6 @@ public:
         //DP Memoization Approach O(N^3) Time: inside every rec call 2 more calls are being made. O(N^2) Space
         vector<vector<int>> dp(s.size(),vector<int>(s.size(),-1));
         int maxLen = 1; string ans = s.substr(0,1);
-        util(0,s.size()-1,s,dp);
-        // for(int i = 0; i<s.size(); ++i)
-        //     for(int j = i+1; j<s.size(); ++j)
-        //         if(dp[i][j] && j-i+1>maxLen)
-        //         {
-        //             maxLen = j-i+1;
-        //             ans = s.substr(i,j-i+1);
-        //         }
         for(int i = 0; i<s.size(); ++i)
             for(int j = i; j<s.size(); ++j)
                 if(s[i]==s[j] && util(i+1,j-1,s,dp))

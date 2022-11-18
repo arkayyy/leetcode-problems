@@ -11,6 +11,7 @@ class Solution{
     //Function to return a list containing the union of the two arrays. 
     vector<int> findUnion(int arr1[], int arr2[], int n, int m)
     {
+        //similar to merge sort algo (with distinct elements only)
         vector<int> ans;
         int i = 0, j = 0, curr;
         while(i<n && j<m)

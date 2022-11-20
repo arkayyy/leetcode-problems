@@ -10,35 +10,34 @@ using namespace std;
 class Solution{
 public:
     vector<int> nextPermutation(int N, vector<int> arr){
-        int i = arr.size()-1;
-        while(i>0)
-        {
-            if(arr[i]>arr[i-1]) break;
-            
+       int i = arr.size()-1;
+       while(i>0)
+       {
+           if(arr[i]>arr[i-1]) break;
             --i;
-        }
-        
-        if(i==0) reverse(arr.begin(),arr.end());
-        else
-        {
-            int j = i, mini = INT_MAX, ind = i-1;
-            while(j<arr.size())
-            {
-                if(arr[j]>arr[i-1])
-                {
-                    if(arr[j]<mini)
-                    {
-                        mini = arr[j];
-                        ind = j;
-                    }
-                }
-                ++j;
-            }
-            swap(arr[i-1],arr[ind]);
-            reverse(arr.begin()+i,arr.end());
-        }
-        
-        return arr;
+       }
+       
+       if(i==0) reverse(arr.begin(),arr.end());
+       else
+       {
+           int j = i, mini = INT_MAX, ind;
+           while(j<arr.size())
+           {
+               if(arr[j]>arr[i-1])
+               {
+                   if(arr[j]<mini)
+                   {
+                       mini = arr[j];
+                       ind = j;
+                   }
+               }
+               ++j;
+           }
+           swap(arr[i-1],arr[ind]);
+           reverse(arr.begin()+i, arr.end());
+       }
+       
+       return arr;
     }
 };
 

@@ -96,7 +96,7 @@ Node* findIntersection(Node* head1, Node* head2)
         }
         while(curr2 && curr1 && curr2->data<curr1->data) curr2 = curr2->next;
         if(curr1 && curr2 && curr1->data==curr2->data) {int currData = curr1->data; dummy->next = new Node(curr2->data); dummy = dummy->next;
-        // while(curr1 && curr2 && curr1->data==curr2->data && curr1->data==currData){curr1 = curr1->next, curr2=curr2->next;}
+        // while(curr1 && curr2 && curr1->data==curr2->data && curr1->data==currData){curr1 = curr1->next, curr2=curr2->next;} //To avoid repeating elements
             curr1 = curr1->next, curr2=curr2->next;
         }
     }
